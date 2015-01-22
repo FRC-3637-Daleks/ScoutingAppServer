@@ -9,10 +9,10 @@
 <body>
 <h1>Home page</h1>
 <p>
-Welcome to "Shop application".<br/>
+Welcome to "Scouting application".<br/>
 <i>${message}</i><br/>
-<a href="${pageContext.request.contextPath}/team/create.html">Create a new team</a><br/>
-<a href="${pageContext.request.contextPath}/team/list.html">View all teams</a><br/>
+<a href="${pageContext.request.contextPath}/match/create.html">Create a new match</a><br/>
+<a href="${pageContext.request.contextPath}/match/list.html">View all matchs</a><br/>
 </p>
 </body>
 </html>
