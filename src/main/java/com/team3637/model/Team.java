@@ -3,6 +3,7 @@ package com.team3637.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,12 +12,13 @@ import javax.persistence.Table;
 public class Team {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
+        private Integer number;
+        
 	private String name;
 
-	@Column(name = "image_location")
 	private String imageLoc;
 
 	public Integer getId() {
@@ -26,6 +28,14 @@ public class Team {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+        
+        public Integer getNumber() {
+        return number;
+        }
+
+        public void setNumber(Integer number) {
+            this.number = number;
+        }
 
 	public String getName() {
 		return name;

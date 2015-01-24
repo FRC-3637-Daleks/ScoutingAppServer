@@ -12,7 +12,9 @@
 Welcome to "Scouting application".<br/>
 <i>${message}</i><br/>
 <a href="${pageContext.request.contextPath}/match/create.html">Create a new match</a><br/>
-<a href="${pageContext.request.contextPath}/match/list.html">View all matchs</a><br/>
+<a href="${pageContext.request.contextPath}/match/list.html">View all matches</a><br/><br/>
+<a href="${pageContext.request.contextPath}/team/create.html">Create a new team</a><br/>
+<a href="${pageContext.request.contextPath}/team/list.html">View all teams</a><br/>
 </p>
 </body>
 </html>

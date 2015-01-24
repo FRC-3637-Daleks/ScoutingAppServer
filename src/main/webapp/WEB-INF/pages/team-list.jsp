@@ -12,17 +12,19 @@
         <table style="text-align: center;" border="1px" cellpadding="0" cellspacing="0" >
             <thead>
                 <tr>
-                    <th width="25px">Match Number</th><th width="150px">Team Number</th><th width="50px">actions</th>
+                    <th width="25px">Match Number</th><th width="75px">Team Name</th><th width="150px">Image Location</th><th width="100px">actions</th>
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="match" items="${matchList}">
+                <c:forEach var="team" items="${teamList}">
                     <tr>
-                        <td>${match.matchNum}</td>
-                        <td>${match.team}</td>
+                        <td>${team.number}</td>
+                        <td>${team.name}</td>
+                        <td>${team.imageLoc}</td>
                         <td>
-                            <a href="${pageContext.request.contextPath}/match/edit/${match.id}.html">Edit</a><br/>
-                            <a href="${pageContext.request.contextPath}/match/delete/${match.id}.html">Delete</a><br/>
+                            <a href="${pageContext.request.contextPath}/team/info/${team.id}.html">Team Info</a><br/>
+                            <a href="${pageContext.request.contextPath}/team/edit/${team.id}.html">Edit</a><br/>
+                            <a href="${pageContext.request.contextPath}/team/delete/${team.id}.html">Delete</a><br/>
                         </td>
                     </tr>
                 </c:forEach>

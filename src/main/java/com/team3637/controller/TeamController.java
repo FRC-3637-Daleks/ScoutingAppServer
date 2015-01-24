@@ -106,5 +106,13 @@ public class TeamController {
 		redirectAttributes.addFlashAttribute("message", message);
 		return mav;
 	}
+        
+        @RequestMapping(value="/info/{id}", method=RequestMethod.GET)
+	public ModelAndView editInfoPage(@PathVariable Integer id) {
+		ModelAndView mav = new ModelAndView("team-info");
+		Team team = teamService.findById(id);
+		mav.addObject("team", team);
+		return mav;
+	}
 	
 }
