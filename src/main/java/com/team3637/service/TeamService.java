@@ -12,5 +12,6 @@ public interface TeamService {
 	public List<Team> findAll();
 	public Team update(Team team) throws TeamNotFound;
 	public Team findById(int id);
+        public Team findByNumber(int number);
 
 }

@@ -57,6 +57,12 @@ public class ScheduleServiceImpl implements ScheduleService {
 			throw new ScheduleNotFound();
 		
 		updatedSchedule.setMatchNum(schedule.getMatchNum());
+                updatedSchedule.setR1(schedule.getR1());
+                updatedSchedule.setR2(schedule.getR2());
+                updatedSchedule.setR3(schedule.getR3());
+                updatedSchedule.setB1(schedule.getB1());
+                updatedSchedule.setB2(schedule.getB2());
+                updatedSchedule.setB3(schedule.getB3());
 		return updatedSchedule;
 	}
 

@@ -29,6 +29,13 @@ public class TeamServiceImpl implements TeamService {
 	public Team findById(int id) {
 		return teamRepository.findOne(id);
 	}
+        
+        @Override
+	@Transactional
+	public Team findByNumber(int number) {
+                System.out.println(number);
+		return teamRepository.findOne(number);
+	}
 
 	@Override
 	@Transactional(rollbackFor=TeamNotFound.class)
@@ -45,6 +52,7 @@ public class TeamServiceImpl implements TeamService {
 	@Override
 	@Transactional
 	public List<Team> findAll() {
+                
 		return teamRepository.findAll();
 	}
 

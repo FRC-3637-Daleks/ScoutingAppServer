@@ -27,44 +27,47 @@ import com.team3637.exception.ScheduleNotFound;
 import com.team3637.model.Schedule;
 import com.team3637.model.WholeSchedule;
 import com.team3637.service.ScheduleService;
-import com.team3637.validation.ScheduleValidator;
+import com.team3637.validation.WholeScheduleValidator;
 
 @Controller
 @RequestMapping(value="/wholeSchedule")
 public class WholeScheduleController {
-    @Autowired
+        @Autowired
 	private ScheduleService scheduleService;
 	
 	@Autowired
-	private ScheduleValidator scheduleValidator;
+	private WholeScheduleValidator wholeScheduleValidator;
 	
-        private List<Schedule> schedule = new ArrayList<Schedule>();
+        private List<Schedule> schedules = new ArrayList<Schedule>();
         
 	@InitBinder
 	private void initBinder(WebDataBinder binder) {
-		binder.setValidator(scheduleValidator);
+		binder.setValidator(wholeScheduleValidator);
 	}
 
 	@RequestMapping(value="/create", method=RequestMethod.GET)
-	public ModelAndView newSchedulePage() {
+	public ModelAndView newWholeSchedulePage() {
                 WholeSchedule wholeSchedule = new WholeSchedule();
-                wholeSchedule.setSchedule(schedule);
-		ModelAndView mav = new ModelAndView("schedule-new", "schedule", wholeSchedule);
+                wholeSchedule.setSchedules(schedules);
+		ModelAndView mav = new ModelAndView("wholeSchedule-new", "wholeSchedule", wholeSchedule);
 		return mav;
 	}
 	
 	@RequestMapping(value="/create", method=RequestMethod.POST)
-	public ModelAndView createNewSchedule(@ModelAttribute @Valid Schedule schedule,
+	public ModelAndView createNewWholeSchedule(@ModelAttribute @Valid WholeSchedule wholeSchedule,
 			BindingResult result,
 			final RedirectAttributes redirectAttributes) {
 		
+                List<Schedule> schedules = wholeSchedule.getSchedules();
+                
 		if (result.hasErrors())
 			return new ModelAndView("schedule-new");
 		
 		ModelAndView mav = new ModelAndView();
-		String message = "New schedule "+schedule.getMatchNum()+" was successfully created.";
+		String message = "New schedule was successfully created.";
 		
-		scheduleService.create(schedule);
+		for(Schedule schedule : schedules)
+                    scheduleService.create(schedule);
 		mav.setViewName("redirect:/index.html");
 				
 		redirectAttributes.addFlashAttribute("message", message);	

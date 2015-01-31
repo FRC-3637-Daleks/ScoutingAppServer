@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Home page</title>
 </head>
 <body>
@@ -14,7 +14,10 @@ Welcome to "Scouting application".<br/>
 <a href="${pageContext.request.contextPath}/match/create.html">Create a new match</a><br/>
 <a href="${pageContext.request.contextPath}/match/list.html">View all matches</a><br/><br/>
 <a href="${pageContext.request.contextPath}/team/create.html">Create a new team</a><br/>
-<a href="${pageContext.request.contextPath}/team/list.html">View all teams</a><br/>
+<a href="${pageContext.request.contextPath}/team/list.html">View all teams</a><br/><br/>
+<a href="${pageContext.request.contextPath}/schedule/create.html">Create a new schedule</a><br/>
+<a href="${pageContext.request.contextPath}/schedule/list.html">View schedule</a><br/>
+<a href="${pageContext.request.contextPath}/wholeSchedule/create.html">Create a new whole schedule</a><br/><br/>
 </p>
 </body>
 </html>

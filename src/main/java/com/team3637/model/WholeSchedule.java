@@ -8,14 +8,14 @@ package com.team3637.model;
 import java.util.List;
 
 public class WholeSchedule {
-    private List<Schedule> schedule;
+    private List<Schedule> schedules;
 
-    public List<Schedule> getSchedule() {
-        return schedule;
+    public List<Schedule> getSchedules() {
+        return schedules;
     }
 
-    public void setSchedule(List<Schedule> schedule) {
-        this.schedule = schedule;
+    public void setSchedules(List<Schedule> schedules) {
+        this.schedules = schedules;
     }
     
 }

@@ -23,7 +23,7 @@ public class ScheduleValidator implements Validator{
 	public void validate(Object target, Errors errors) {
 		Schedule schedule = (Schedule) target;
 		
-		ValidationUtils.rejectIfEmpty(errors, "matchNum", "team.matchNum.empty");
+		//ValidationUtils.rejectIfEmpty(errors, "matchNum", "schedule.matchNum.empty");
 
 	}
 }
