@@ -214,3 +214,5 @@ pip-log.txt
 #Mr Developer
 .mr.developer.cfg
 /src/main/webapp/META-INF/maven/com/dpr-data/target/
+
+target/
