@@ -25,28 +25,40 @@
             <input type="text" name="size" value="<%= size %>"/>
             <input type ="submit"/>
         </form>
-        <table>
+        <br>
+        <table style="text-align: center; width: 85%" border="1px" cellpadding="0" cellspacing="0" >
             <thead>
                 <tr>
-                    <th>R1</th><th>R2</th><th>R3</th><th>B1</th><th>B2</th><th>B3</th>
+                    <th style="width: 16.66%">R1</th>
+                    <th style="width: 0%"></th>
+                    <th style="width: 16.66%">R2</th>
+                    <th style="width: 0%"></th>
+                    <th style="width: 16.66%">R3</th>
+                    <th style="width: 0%"></th>
+                    <th style="width: 16.66%">B1</th>
+                    <th style="width: 0%"></th>
+                    <th style="width: 16.66%">B2</th>
+                    <th style="width: 0%"></th>
+                    <th style="width: 16.66%">B3</th>
+                    <th style="width: 0%"></th>
                 </tr>
             </thead>
             <tbody>
                 <form:form method="POST" commandName="wholeSchedule" action="${pageContext.request.contextPath}/wholeSchedule/create.html" modelattribute="wholeSchedule">
                     <c:forEach var="i" begin="1" end="<%= size %>">
                     <tr>
-                        <td><form:input path="schedules[${i}].r1" value="1"/></td>
-                        <td><form:errors path="schedules[${i}].r1" cssStyle="color: red;"/></td>
-                        <td><form:input path="schedules[${i}].r2" value="2"/></td>
-                        <td><form:errors path="schedules[${i}].r2" cssStyle="color: red;"/></td>
-                        <td><form:input path="schedules[${i}].r3" value="3"/></td>
-                        <td><form:errors path="schedules[${i}].r3" cssStyle="color: red;"/></td>
-                        <td><form:input path="schedules[${i}].b1" value="4"/></td>
-                        <td><form:errors path="schedules[${i}].b1" cssStyle="color: red;"/></td>
-                        <td><form:input path="schedules[${i}].b2" value="5"/></td>
-                        <td><form:errors path="schedules[${i}].b2" cssStyle="color: red;"/></td>
-                        <td><form:input path="schedules[${i}].b3" value="6"/></td>
-                        <td><form:errors path="schedules[${i}].b3" cssStyle="color: red;"/></td>
+                        <td style="width: 16.66%"><form:input style="text-align: center" path="schedules[${i}].r1" value="1"/></td>
+                        <td style="width: 0%"><form:errors path="schedules[${i}].r1" cssStyle="color: red;"/></td>
+                        <td style="width: 16.66%"><form:input style="text-align: center" path="schedules[${i}].r2" value="2"/></td>
+                        <td style="width: 0%"><form:errors path="schedules[${i}].r2" cssStyle="color: red;"/></td>
+                        <td style="width: 16.66%"><form:input style="text-align: center" path="schedules[${i}].r3" value="3"/></td>
+                        <td style="width: 0%"><form:errors path="schedules[${i}].r3" cssStyle="color: red;"/></td>
+                        <td style="width: 16.66%"><form:input style="text-align: center" path="schedules[${i}].b1" value="4"/></td>
+                        <td style="width: 0%"><form:errors path="schedules[${i}].b1" cssStyle="color: red;"/></td>
+                        <td style="width: 16.66%"><form:input style="text-align: center" path="schedules[${i}].b2" value="5"/></td>
+                        <td style="width: 0%"><form:errors path="schedules[${i}].b2" cssStyle="color: red;"/></td>
+                        <td style="width: 16.66%"><form:input style="text-align: center" path="schedules[${i}].b3" value="6"/></td>
+                        <td style="width: 0%"><form:errors path="schedules[${i}].b3" cssStyle="color: red;"/></td>
                     </tr>
                     </c:forEach>
                     <tr>
