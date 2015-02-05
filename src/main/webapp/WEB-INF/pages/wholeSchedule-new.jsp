@@ -3,6 +3,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
+<link type="text/css" rel="stylesheet" href="scouting.css" />
 <%  
     int size;
     String input = request.getParameter("size");
@@ -26,7 +27,7 @@
             <input type ="submit"/>
         </form>
         <br>
-        <table style="text-align: center; width: 85%; padding-bottom: 5px; border: 0px;">
+        <table class="table">
             <thead>
                 <tr>
                     <th style="width: 16.66%">R1</th>
