@@ -26,7 +26,7 @@
             <input type ="submit"/>
         </form>
         <br>
-        <table style="text-align: center; width: 85%" border="1px" cellpadding="0" cellspacing="0" >
+        <table style="text-align: center; width: 85%; padding-bottom: 5px; border: 0px;">
             <thead>
                 <tr>
                     <th style="width: 16.66%">R1</th>
