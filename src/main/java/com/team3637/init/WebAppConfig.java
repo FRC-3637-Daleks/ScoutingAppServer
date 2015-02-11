@@ -18,6 +18,8 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
@@ -27,7 +29,7 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 @ComponentScan("com.team3637")
 @PropertySource("classpath:application.properties")
 @EnableJpaRepositories("com.team3637.repository")
-public class WebAppConfig {
+public class WebAppConfig extends WebMvcConfigurerAdapter{
 
 	private static final String PROPERTY_NAME_DATABASE_DRIVER = "db.driver";
 	private static final String PROPERTY_NAME_DATABASE_PASSWORD = "db.password";
@@ -95,5 +97,10 @@ public class WebAppConfig {
 		source.setUseCodeAsDefaultMessage(true);
 		return source;
 	}
+        
+        @Override
+        public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+            registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+        }
 
 }

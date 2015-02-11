@@ -18,6 +18,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Schedule Page</title>
+        <link rel="icon" type="image/icon" href="${pageContext.request.contextPath}/resources/favicon.ico">
         <style>
             .table {
                 text-align: center;
