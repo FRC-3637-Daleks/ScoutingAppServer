@@ -1,20 +1,20 @@
 body {
-	padding-top:10px;
-	background-color:#D4D4D4;
+    padding-top:10px;
+    background-color:#D4D4D4;
 }
 
 h1 {
-	color:wheat;
+    color:wheat;
 }
 
 p  {
-	color:aqua;
+    color:aqua;
 }
 
 table {
     width: 100%;
     display: block;
-	margin-top:15px;
+    margin-top:15px;
 }
 
 thead {
@@ -61,5 +61,11 @@ td {
 
 textarea {
     resize: none;
-	background-color:#D4D4D4;
+    background-color:#D4D4D4;
+}
+
+#start {
+	height:100px;
+	width:250px;
+	font-size:24px;
 }
