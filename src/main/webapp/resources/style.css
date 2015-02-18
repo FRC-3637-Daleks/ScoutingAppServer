@@ -12,39 +12,44 @@ p  {
 }
 
 table {
-    width: 100%;
     display: block;
-    margin-top:15px;
+    margin-top:0px;
+    overflow-x: auto;
+    overflow-y: auto;
+    background-color:#5F5D63;
+    
 }
 
 thead {
-    display: inline-block;
+    display: block;
     width: 100%;
-    height: 42px;
-    background-color:#5F5D63;
+    height: 70px;
 }
 
 tbody {
     height: auto;
-    display: inline-block;
+    display: block;
     width: 100%;
-    overflow-y: auto;
-    background-color:#5F5D63;
 }
 
 tr {
-    width: 600px;
     color: black;
     background-color:#D4D4D4;
 }
 
 td {
+    padding: auto;
+    text-align: center;
+}
+
+th {
     width: 33%;
     padding: auto;
     text-align: center;
 }
+
 .col1 {
-    width: 500px;
+    width: 100px;
 }
 
 .col2 {
@@ -64,8 +69,8 @@ textarea {
     background-color:#D4D4D4;
 }
 
-#start {
-	height:100px;
-	width:250px;
-	font-size:24px;
+#robotPic {
+    position: absolute;
+    top: 18px;
+    right: 25px;
 }

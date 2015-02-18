@@ -16,50 +16,60 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.team3637.exception.MatchNotFound;
+import com.team3637.model.Match;
+import com.team3637.service.MatchService;
+import com.team3637.validation.MatchValidator;
 import com.team3637.exception.ScheduleNotFound;
 import com.team3637.model.Schedule;
 import com.team3637.service.ScheduleService;
 import com.team3637.validation.ScheduleValidator;
 
 @Controller
-@RequestMapping(value="/schedule")
-public class ScheduleController {
+@RequestMapping(value="/input")
+public class InputController {
 	
 	@Autowired
+	private MatchService matchService;
+        @Autowired
 	private ScheduleService scheduleService;
 	
 	@Autowired
+	private MatchValidator matchValidator;
+        @Autowired
 	private ScheduleValidator scheduleValidator;
 	
 	@InitBinder
 	private void initBinder(WebDataBinder binder) {
-		binder.setValidator(scheduleValidator);
+		binder.setValidator(matchValidator);
 	}
 
 	@RequestMapping(value="/create", method=RequestMethod.GET)
-	public ModelAndView newSchedulePage() {
-		ModelAndView mav = new ModelAndView("schedule-new", "schedule", new Schedule());
+	public ModelAndView newMatchPage() {
+		ModelAndView mav = new ModelAndView("data-input", "match", new Match());
+                List<Match> matchList = matchService.findAll();
+		mav.addObject("matchList", matchList);
 		return mav;
 	}
 	
 	@RequestMapping(value="/create", method=RequestMethod.POST)
-	public ModelAndView createNewSchedule(@ModelAttribute @Valid Schedule schedule,
+	public ModelAndView createNewMatch(@ModelAttribute @Valid Match match,
 			BindingResult result,
 			final RedirectAttributes redirectAttributes) {
 		
 		if (result.hasErrors())
-			return new ModelAndView("schedule-new");
+			return new ModelAndView("data-input");
 		
 		ModelAndView mav = new ModelAndView();
-		String message = "New schedule "+schedule.getMatchNum()+" was successfully created.";
+		String message = "New match "+match.getMatchNum()+" was successfully created.";
 		
-		scheduleService.create(schedule);
+		matchService.create(match);
 		mav.setViewName("redirect:/index.html");
 				
 		redirectAttributes.addFlashAttribute("message", message);	
 		return mav;		
 	}
-	
+        
         @RequestMapping(value="/schedule", method=RequestMethod.GET)
 	public ModelAndView matchSelectPage() {
 		ModelAndView mav = new ModelAndView("match-select");
@@ -67,59 +77,51 @@ public class ScheduleController {
 		mav.addObject("scheduleList", scheduleList);
 		return mav;
 	}
-        
+	
 	@RequestMapping(value="/list", method=RequestMethod.GET)
-	public ModelAndView scheduleListPage() {
-		ModelAndView mav = new ModelAndView("schedule-list");
-		List<Schedule> scheduleList = scheduleService.findAll();
-		mav.addObject("scheduleList", scheduleList);
+	public ModelAndView matchListPage() {
+		ModelAndView mav = new ModelAndView("match-list");
+		List<Match> matchList = matchService.findAll();
+		mav.addObject("matchList", matchList);
 		return mav;
 	}
 	
-	@RequestMapping(value="/edit/{matchNum}", method=RequestMethod.GET)
-	public ModelAndView editSchedulePage(@PathVariable Integer matchNum) {
-		ModelAndView mav = new ModelAndView("schedule-edit");
-		Schedule schedule = scheduleService.findByMatchNum(matchNum);
-		mav.addObject("schedule", schedule);
+	@RequestMapping(value="/edit/{id}", method=RequestMethod.GET)
+	public ModelAndView editMatchPage(@PathVariable Integer id) {
+		ModelAndView mav = new ModelAndView("match-edit");
+		Match match = matchService.findById(id);
+		mav.addObject("match", match);
 		return mav;
 	}
 	
-	@RequestMapping(value="/edit/{matchNum}", method=RequestMethod.POST)
-	public ModelAndView editSchedule(@ModelAttribute @Valid Schedule schedule,
+	@RequestMapping(value="/edit/{id}", method=RequestMethod.POST)
+	public ModelAndView editMatch(@ModelAttribute @Valid Match match,
 			BindingResult result,
-			@PathVariable Integer matchNum,
-			final RedirectAttributes redirectAttributes) throws ScheduleNotFound {
+			@PathVariable Integer id,
+			final RedirectAttributes redirectAttributes) throws MatchNotFound {
 		
 		if (result.hasErrors())
-			return new ModelAndView("schedule-edit");
+			return new ModelAndView("match-edit");
 		
 		ModelAndView mav = new ModelAndView("redirect:/index.html");
-		String message = "Schedule was successfully updated.";
+		String message = "Match was successfully updated.";
 
-		scheduleService.update(schedule);
+		matchService.update(match);
 		
 		redirectAttributes.addFlashAttribute("message", message);	
 		return mav;
 	}
 	
-	@RequestMapping(value="/delete/{matchNum}", method=RequestMethod.GET)
-	public ModelAndView deleteSchedule(@PathVariable Integer matchNum,
-			final RedirectAttributes redirectAttributes) throws ScheduleNotFound {
+	@RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
+	public ModelAndView deleteMatch(@PathVariable Integer id,
+			final RedirectAttributes redirectAttributes) throws MatchNotFound {
 		
 		ModelAndView mav = new ModelAndView("redirect:/index.html");		
 		
-		Schedule schedule = scheduleService.delete(matchNum);
-		String message = "The schedule "+schedule.getMatchNum()+" was successfully deleted.";
+		Match match = matchService.delete(id);
+		String message = "The match "+match.getMatchNum()+" was successfully deleted.";
 		
 		redirectAttributes.addFlashAttribute("message", message);
-		return mav;
-	}
-        
-        @RequestMapping(value="/info/{matchNum}", method=RequestMethod.GET)
-	public ModelAndView editInfoPage(@PathVariable Integer matchNum) {
-		ModelAndView mav = new ModelAndView("schedule-info");
-		Schedule schedule = scheduleService.findByMatchNum(matchNum);
-		mav.addObject("schedule", schedule);
 		return mav;
 	}
 	

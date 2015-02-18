@@ -12,6 +12,7 @@
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/script.js"></script>
     </head>
     <body>
+        <i>${message}</i>
     	<center>
             <div>
                 <img src="${pageContext.request.contextPath}/resources/daleks_banner.jpg" alt="Team 3637 the Daleks - Hunterdon Central R.H.S."><br/>
