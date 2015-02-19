@@ -12,11 +12,11 @@
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/script.js"></script>
     </head>
     <body>
-        <i>${message}</i>
     	<center>
+            <i>${message}</i>
             <div>
                 <img src="${pageContext.request.contextPath}/resources/daleks_banner.jpg" alt="Team 3637 the Daleks - Hunterdon Central R.H.S."><br/>
-                <input type="button" value="Start Scouting" id="start"/>
+                <button type="button" onClick="window.location.href='${pageContext.request.contextPath}/input/schedule.html'" id="start">Start Scouting</button>
             </div>
         </center>
     </body>

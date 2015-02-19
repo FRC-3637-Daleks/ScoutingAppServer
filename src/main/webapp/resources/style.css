@@ -74,3 +74,9 @@ textarea {
     top: 18px;
     right: 25px;
 }
+
+#start {
+    height: 100px;
+    width: 200px;
+    font-size: 25px;
+}

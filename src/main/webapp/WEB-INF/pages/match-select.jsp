@@ -11,7 +11,7 @@
 <body bgcolor="#D4D4D4">
     <center>
         <div style="height: 177px">   
-        <center><img src="daleks_banner.jpg" alt="Hunterdon Central"></center>
+        <center><img src="${pageContext.request.contextPath}/resources/daleks_banner.jpg" alt="Team 3637 the Daleks"></center>
         </div>
         <hr>
         <h1 align="center">Match List page</h1>
@@ -31,12 +31,12 @@
                 <c:forEach var="schedule" items="${scheduleList}">
                     <tr>
                         <td>${schedule.matchNum}</td>
-                        <td>${schedule.r1}</td>
-                        <td>${schedule.r2}</td>
-                        <td>${schedule.r3}</td>
-                        <td>${schedule.b1}</td>
-                        <td>${schedule.b2}</td>
-                        <td>${schedule.b3}</td>
+                        <td><a href="${pageContext.request.contextPath}/input/create.html?matchNum=${schedule.matchNum}&teamNum=${schedule.r1}">${schedule.r1}</a></td>
+                        <td><a href="${pageContext.request.contextPath}/input/create.html?matchNum=${schedule.matchNum}&teamNum=${schedule.r2}"${schedule.r2}>${schedule.r2}</a></td>
+                        <td><a href="${pageContext.request.contextPath}/input/create.html?matchNum=${schedule.matchNum}&teamNum=${schedule.r3}">${schedule.r3}</a></td>
+                        <td><a href="${pageContext.request.contextPath}/input/create.html?matchNum=${schedule.matchNum}&teamNum=${schedule.b1}">${schedule.b1}</a></td>
+                        <td><a href="${pageContext.request.contextPath}/input/create.html?matchNum=${schedule.matchNum}&teamNum=${schedule.b2}">${schedule.b2}</a></td>
+                        <td><a href="${pageContext.request.contextPath}/input/create.html?matchNum=${schedule.matchNum}&teamNum=${schedule.b3}">${schedule.b3}</a></td>
                     </tr>
                 </c:forEach>
             </tbody>
