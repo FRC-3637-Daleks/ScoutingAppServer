@@ -30,6 +30,7 @@
         matchNum = 1;
     }
 %>
+<c:set var="teamNum" value="<%= teamNum %>" />
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -94,44 +95,46 @@
                     <th class="col1"><u>Poor_Construction_Integrity</u></th>
                 </tr>
                 <c:forEach var="match" items="${matchList}">
-                    <tr>
-                        <td><input type="checkbox" onClick="return false"<c:if test="${match.autoRobot == true}">checked</c:if>></td>
-                        <td><input type="checkbox" onClick="return false"<c:if test="${match.autoStep == true}">checked</c:if>></td>
-                        <td>${match.autoStack}</td>
-                        <td><input type="checkbox" onClick="return false"<c:if test="${match.autoVision == true}">checked</c:if>></td>
-                        <td><input type="checkbox" onClick="return false"<c:if test="${match.autoDeadRec == true}">checked</c:if>></td>
-                        <td><input type="checkbox" onClick="return false"<c:if test="${match.autoOverBump == true}">checked</c:if>></td>
-                        <td><input type="checkbox" onClick="return false"<c:if test="${match.autoAroundBump == true}">checked</c:if>></td>
-                        <td><input type="checkbox" onClick="return false"<c:if test="${match.overBump == true}">checked</c:if>></td>
-                        <td>${match.speed}</td>
-                        <td><input type="checkbox" onClick="return false"<c:if test="${match.dropTote == true}">checked</c:if>></td>
-                        <td><input type="checkbox" onClick="return false"<c:if test="${match.knockStack == true}">checked</c:if>></td>
-                        <td><input type="checkbox" onClick="return false"<c:if test="${match.litterCan == true}">checked</c:if>></td>
-                        <td><input type="checkbox" onClick="return false"<c:if test="${match.litterUp == true}">checked</c:if>></td>
-                        <td><input type="checkbox" onClick="return false"<c:if test="${match.litterPush == true}">checked</c:if>></td>
-                        <td>${match.totesCarried}</td>
-                        <td><input type="checkbox" onClick="return false"<c:if test="${match.diffOps == true}">checked</c:if>></td>
-                        <td><input type="checkbox" onClick="return false"<c:if test="${match.upOrFlip == true}">checked</c:if>></td>
-                        <td>${match.onTopOf}</td>
-                        <td>${match.pickUpSpeed}</td>
-                        <td><input type="checkbox" onClick="return false"<c:if test="${match.hpTotes == true}">checked</c:if>></td>
-                        <td><input type="checkbox" onClick="return false"<c:if test="${match.hpLitter == true}">checked</c:if>></td>
-                        <td><input type="checkbox" onClick="return false"<c:if test="${match.hpThrow == true}">checked</c:if>></td>
-                        <td><input type="checkbox" onClick="return false"<c:if test="${match.canUp == true}">checked</c:if>></td>
-                        <td>${match.downHeight}</td>
-                        <td><input type="checkbox" onClick="return false"<c:if test="${match.takeCanFromStep == true}">checked</c:if>></td>
-                        <td>${match.canUpSpeed}</td>
-                        <td><input type="checkbox" onClick="return false"<c:if test="${match.canDiffOps == true}">checked</c:if>></td>
-                        <td><input type="checkbox" onClick="return false"<c:if test="${match.canFromStepNoFill == true}">checked</c:if>></td>
-                        <td><input type="checkbox" onClick="return false"<c:if test="${match.coopTote == true}">checked</c:if>></td>
-                        <td>${match.coopStep}</td>
-                        <td><input type="checkbox" onClick="return false"<c:if test="${match.failFunction == true}">checked</c:if>></td>
-                        <td><input type="checkbox" onClick="return false"<c:if test="${match.fouls == true}">checked</c:if>></td>
-                        <td><input type="checkbox" onClick="return false"<c:if test="${match.deadOnArrive == true}">checked</c:if>></td>
-                        <td><input type="checkbox" onClick="return false"<c:if test="${match.tip == true}">checked</c:if>></td>
-                        <td><input type="checkbox" onClick="return false"<c:if test="${match.commError == true}">checked</c:if>></td>
-                        <td><input type="checkbox" onClick="return false"<c:if test="${match.shotty == true}">checked</c:if>></td>
-                    </tr>
+                    <c:if test="${match.team == teamNum}">
+                        <tr>
+                            <td><input type="checkbox" onClick="return false"<c:if test="${match.autoRobot == true}">checked</c:if>></td>
+                            <td><input type="checkbox" onClick="return false"<c:if test="${match.autoStep == true}">checked</c:if>></td>
+                            <td>${match.autoStack}</td>
+                            <td><input type="checkbox" onClick="return false"<c:if test="${match.autoVision == true}">checked</c:if>></td>
+                            <td><input type="checkbox" onClick="return false"<c:if test="${match.autoDeadRec == true}">checked</c:if>></td>
+                            <td><input type="checkbox" onClick="return false"<c:if test="${match.autoOverBump == true}">checked</c:if>></td>
+                            <td><input type="checkbox" onClick="return false"<c:if test="${match.autoAroundBump == true}">checked</c:if>></td>
+                            <td><input type="checkbox" onClick="return false"<c:if test="${match.overBump == true}">checked</c:if>></td>
+                            <td>${match.speed}</td>
+                            <td><input type="checkbox" onClick="return false"<c:if test="${match.dropTote == true}">checked</c:if>></td>
+                            <td><input type="checkbox" onClick="return false"<c:if test="${match.knockStack == true}">checked</c:if>></td>
+                            <td><input type="checkbox" onClick="return false"<c:if test="${match.litterCan == true}">checked</c:if>></td>
+                            <td><input type="checkbox" onClick="return false"<c:if test="${match.litterUp == true}">checked</c:if>></td>
+                            <td><input type="checkbox" onClick="return false"<c:if test="${match.litterPush == true}">checked</c:if>></td>
+                            <td>${match.totesCarried}</td>
+                            <td><input type="checkbox" onClick="return false"<c:if test="${match.diffOps == true}">checked</c:if>></td>
+                            <td><input type="checkbox" onClick="return false"<c:if test="${match.upOrFlip == true}">checked</c:if>></td>
+                            <td>${match.onTopOf}</td>
+                            <td>${match.pickUpSpeed}</td>
+                            <td><input type="checkbox" onClick="return false"<c:if test="${match.hpTotes == true}">checked</c:if>></td>
+                            <td><input type="checkbox" onClick="return false"<c:if test="${match.hpLitter == true}">checked</c:if>></td>
+                            <td><input type="checkbox" onClick="return false"<c:if test="${match.hpThrow == true}">checked</c:if>></td>
+                            <td><input type="checkbox" onClick="return false"<c:if test="${match.canUp == true}">checked</c:if>></td>
+                            <td>${match.downHeight}</td>
+                            <td><input type="checkbox" onClick="return false"<c:if test="${match.takeCanFromStep == true}">checked</c:if>></td>
+                            <td>${match.canUpSpeed}</td>
+                            <td><input type="checkbox" onClick="return false"<c:if test="${match.canDiffOps == true}">checked</c:if>></td>
+                            <td><input type="checkbox" onClick="return false"<c:if test="${match.canFromStepNoFill == true}">checked</c:if>></td>
+                            <td><input type="checkbox" onClick="return false"<c:if test="${match.coopTote == true}">checked</c:if>></td>
+                            <td>${match.coopStep}</td>
+                            <td><input type="checkbox" onClick="return false"<c:if test="${match.failFunction == true}">checked</c:if>></td>
+                            <td><input type="checkbox" onClick="return false"<c:if test="${match.fouls == true}">checked</c:if>></td>
+                            <td><input type="checkbox" onClick="return false"<c:if test="${match.deadOnArrive == true}">checked</c:if>></td>
+                            <td><input type="checkbox" onClick="return false"<c:if test="${match.tip == true}">checked</c:if>></td>
+                            <td><input type="checkbox" onClick="return false"<c:if test="${match.commError == true}">checked</c:if>></td>
+                            <td><input type="checkbox" onClick="return false"<c:if test="${match.shotty == true}">checked</c:if>></td>
+                        </tr>
+                    </c:if>
                 </c:forEach>
         </table>
         <br>
