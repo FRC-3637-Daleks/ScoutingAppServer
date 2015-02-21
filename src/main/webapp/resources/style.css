@@ -1,23 +1,21 @@
+/* elements */
 body {
     padding-top:10px;
     background-color:#D4D4D4;
-}
-
-h1 {
-    color:wheat;
-}
-
-p  {
-    color:aqua;
+    text-align: center;
 }
 
 table {
+    width: 85%;
     display: block;
     margin-top:0px;
     overflow-x: auto;
     overflow-y: auto;
     background-color:#5F5D63;
-    
+    margin-left: auto;
+    margin-right: auto;
+    border: 3px outset #999999;
+    border-spacing: 10px;
 }
 
 thead {
@@ -38,35 +36,39 @@ tr {
 }
 
 td {
-    padding: auto;
+    padding: 5px;
     text-align: center;
 }
 
 th {
     width: 33%;
-    padding: auto;
+    padding: 5px;
     text-align: center;
-}
-
-.col1 {
-    width: 100px;
-}
-
-.col2 {
-    width: 1600px;
-}
-
-.col3 {
-    width: 750px;
-}
-
-.col4 {
-    width: 533px;
 }
 
 textarea {
     resize: none;
     background-color:#D4D4D4;
+}
+
+/* classes */
+
+.input th {
+    width: 1600px; 
+}
+
+/* ids */
+
+#auto td {
+    width: 50%;
+}
+
+#teleop td {
+    width: 33%;
+}
+
+#post td {
+    width: 50%;
 }
 
 #robotPic {
@@ -79,4 +81,14 @@ textarea {
     height: 100px;
     width: 200px;
     font-size: 25px;
+}
+
+.large {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.heading {
+    font-size: 2.5em;
+    font-weight: bold;
 }
