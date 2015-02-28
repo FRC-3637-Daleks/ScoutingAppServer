@@ -16,7 +16,7 @@
             <i>${message}</i>
             <div>
                 <img src="${pageContext.request.contextPath}/resources/daleks_banner.jpg" alt="Team 3637 the Daleks - Hunterdon Central R.H.S."><br/>
-                <button type="button" onClick="window.location.href='${pageContext.request.contextPath}/input/schedule.html'" id="start">Start Scouting</button>
+                <button type="button" onClick="window.location.href='${pageContext.request.contextPath}/input/schedule.html'" id="start">Start Scouting &#x2192;</button>
             </div>
         </center>
     </body>

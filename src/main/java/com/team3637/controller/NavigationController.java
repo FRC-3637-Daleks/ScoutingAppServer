@@ -12,5 +12,10 @@ public class NavigationController {
 	public ModelAndView index() {
 		return new ModelAndView("index");
 	}
+        
+        @RequestMapping(value={"/list"}, method=RequestMethod.GET)
+        public ModelAndView list() {
+            return new ModelAndView("page-list");
+        }
 	
 }

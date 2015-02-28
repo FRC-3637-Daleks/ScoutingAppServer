@@ -3,34 +3,21 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE HTML>
-<%  
-    int teamNum, teamName, matchNum;
-    String inputTeamNum = request.getParameter("teamNum");
-    String inputTeamName = request.getParameter("teamName");
-    String inputMatchNum = request.getParameter("matchNum");
-    if (inputTeamNum == null || inputTeamNum == "") {
-        teamNum = 1;
-    } else if (inputTeamNum.matches("[-+]?\\d*\\.?\\d+")){
-        teamNum = Integer.parseInt(inputTeamNum);
-    } else {
-        teamNum = 1;
-    }
-    if (inputTeamName == null || inputTeamName == "") {
-        teamName = 1;
-    } else if (inputTeamName.matches("[-+]?\\d*\\.?\\d+")){
-        teamName = Integer.parseInt(inputTeamName);
-    } else {
-        teamName = 1;
-    }
-    if (inputMatchNum == null || inputMatchNum == "") {
-        matchNum = 1;
-    } else if (inputMatchNum.matches("[-+]?\\d*\\.?\\d+")){
-        matchNum = Integer.parseInt(inputMatchNum);
-    } else {
-        matchNum = 1;
+<%! 
+    public static int check(String arg) {
+        int num = 1;
+        if (arg == null || arg == "") {
+            num = 1;
+        } else if (arg.matches("[-+]?\\d*\\.?\\d+")){
+            num = Integer.parseInt(arg);
+        } else {
+            num = 1;
+        }
+        return num;
     }
 %>
-<c:set var="teamNum" value="<%= teamNum %>" />
+<c:set var="teamNum" value='<%= check(request.getParameter("teamNum")) %>' />
+<c:set var="matchNum" value='<%= check(request.getParameter("matchNum")) %>' />
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -40,12 +27,11 @@
     </head>
     <body>
         <img src="${pageContext.request.contextPath}/resources/daleks_banner.jpg" alt="Hunterdon Central">
-        <img src="${pageContext.request.contextPath}/resources/daleks_banner.jpg" alt="Hunterdon Central" id="robotPic">
+        <img src="${pageContext.request.contextPath}/resources/teams/${teamNum}.jpg" alt="Hunterdon Central" id="robotPic">
         <hr>
-        <div class="heading">Team: <%= teamNum %> Match: <%= matchNum %></div>
+        <div class="heading"><div id="back"><button onclick="window.location = '${pageContext.request.contextPath}/input/schedule.html'">&#x2190; Back</button></div>Team: ${teamNum} Match: ${matchNum}</div>
         <hr>
         <div class="large">Team Match History</div>
-        <br>  
         <table>    
                 <tr>
                     <th colspan="7"><u>Autonomous</u></th>
@@ -133,14 +119,11 @@
                     </c:if>
                 </c:forEach>
         </table>
-        <br>
         <hr>
         <div class="large">Match Input</div>
-        <br>
-        <br>
-        <form:form method="POST" commandName="match" action="${pageContext.request.contextPath}/match/create.html">
-            <form:hidden path="matchNum" value="<%= matchNum %>" />
-            <form:hidden path="team" value="<%= teamNum %>" />
+        <form:form method="POST" commandName="match" action="${pageContext.request.contextPath}/input/create.html">
+            <form:hidden path="matchNum" value="${matchNum}" />
+            <form:hidden path="team" value="${teamNum}" />
             <center>
                 <table id="auto" class="input">
                     <thead>
@@ -329,7 +312,6 @@
                         </tr>
                     </tbody>
                 </table>
-                <br>
                 <input type="submit" value="Submit">
             </center>
         </form:form>  

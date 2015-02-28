@@ -9,7 +9,11 @@
     if (input == null || input == "") {
         size = 1;
     } else if (input.matches("[-+]?\\d*\\.?\\d+")){
-        size = Integer.parseInt(input);
+        if (Integer.parseInt(input) > 0) {
+            size = Integer.parseInt(input);
+        } else {
+            size = 1;
+        }
     } else {
         size = 1;
     }
@@ -54,7 +58,7 @@
             </thead>
             <tbody>
                 <form:form method="POST" commandName="wholeSchedule" action="${pageContext.request.contextPath}/wholeSchedule/create.html" modelattribute="wholeSchedule">
-                    <c:forEach var="i" begin="1" end="<%= size %>">
+                    <c:forEach var="i" begin="0" end="<%= size - 1%>">
                     <tr>
                         <td style="width: 16.66%"><form:input style="text-align: center" path="schedules[${i}].r1" value="1"/></td>
                         <td style="width: 0%"><form:errors path="schedules[${i}].r1" cssStyle="color: red;"/></td>

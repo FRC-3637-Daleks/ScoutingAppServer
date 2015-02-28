@@ -61,10 +61,10 @@ public class InputController {
 			return new ModelAndView("data-input");
 		
 		ModelAndView mav = new ModelAndView();
-		String message = "New match "+match.getMatchNum()+" was successfully created.";
+		String message = "Match number " + match.getMatchNum() + " with team " + match.getTeam() + " was successfully created.";
 		
 		matchService.create(match);
-		mav.setViewName("redirect:/index.html");
+		mav.setViewName("redirect:/input/schedule.html");
 				
 		redirectAttributes.addFlashAttribute("message", message);	
 		return mav;		

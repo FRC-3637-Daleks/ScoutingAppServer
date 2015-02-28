@@ -1,41 +1,50 @@
-<%-- 
-    Document   : report
-    Created on : Feb 20, 2015, 6:29:04 PM
-    Author     : Zethra
---%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%! 
+    public static int check(String arg) {
+        int num = 1;
+        if (arg == null || arg == "") {
+            num = 1;
+        } else if (arg.matches("[-+]?\\d*\\.?\\d+")){
+            num = Integer.parseInt(arg);
+        } else {
+            num = 1;
+        }
+        return num;
+    }
+%>
+<c:set var="ally1" value='<%= check(request.getParameter("ally1")) %>' />
+<c:set var="ally2" value='<%= check(request.getParameter("ally2")) %>' />
+<c:set var="opp1" value='<%= check(request.getParameter("opp1")) %>' />
+<c:set var="opp2" value='<%= check(request.getParameter("opp2")) %>' />
+<c:set var="opp3" value='<%= check(request.getParameter("opp3")) %>' />
 
-<%@page contentType="text/html" pageEncoding="windows-1252"%>
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+<c:forEach var="match" items="${matchList}" varStatus="loop">
+    <c:if test="${match.team == ally1}"><c:set var="ally1Pos" value="${loop.index}"/></c:if>
+    <c:if test="${match.team == ally2}"><c:set var="ally2Pos" value="${loop.index}"/></c:if>
+    <c:if test="${match.team == opp1}"><c:set var="opp1Pos" value="${loop.index}"/></c:if>
+    <c:if test="${match.team == opp2}"><c:set var="opp2Pos" value="${loop.index}"/></c:if>
+    <c:if test="${match.team == opp3}"><c:set var="opp3Pos" value="${loop.index}"/></c:if>
+</c:forEach>
 <html>
     <head>
-        <link rel="icon" type="image/icon" href="favicon.ico">
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <script type="text/javascript" src="jquery-2.1.3.min.js"></script>
-        <script type="text/javascript" src="gui.js"></script>
+        <link rel="icon" type="image/icon" href="${pageContext.request.contextPath}/resources/favicon.ico">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/style.css">
         <title>Team 3637 Scouting App</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-    <center>
-        <div style="height: 177px">   
-        <center><img src="daleks_banner.jpg" alt="Hunterdon Central"></center>
-        </div>
+        <img src="${pageContext.request.contextPath}/resources/daleks_banner.jpg" alt="Hunterdon Central">
         <hr>
-        <h2>Pre-Match Scouting Report</h2>
-        <br>
-        <h4 align="center">Information about the other alliance teams will be:</h4>
+        <div class="heading">Pre-Match Scouting Report</div>
+        <h4>Information about the other alliance teams will be:</h4>
         <table align="center" style="width: 42.5%; text-align: center" border="3" cellpadding="5" cellspacing="10">
                 <tr>
                     <td style="width: 325px"><b></b></td>
-                    <td style="width: 130px"><b>Team 1</b></td>
-                    <td style="width: 130px"><b>Team 2</b></td>
-                    <td style="width: 130px"><b>Team 3</b></td>
+                    <td style="width: 130px"><b>${oop1.team}</b></td>
+                    <td style="width: 130px"><b>${opp2}</b></td>
+                    <td style="width: 130px"><b>${opp3}</b></td>
                 </tr>
                 <tr>
                     <td style="width: 325px"><b>Cooperitition</b></td>
@@ -334,7 +343,5 @@ and open the template in the editor.
                     <td style="width: 142.5px; height: 20px"></td>
                 </tr>
         </table>
-        <br><br><br>
-    </center>
     </body>
  </html>
