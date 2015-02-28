@@ -36,7 +36,7 @@
                 <tr>
                     <th colspan="7"><u>Autonomous</u></th>
                     <th colspan="21"><u>Teleop</u></th>
-                    <th colspan="8"><u>Post_Game</u></th>
+                    <th colspan="10"><u>Post_Game</u></th>
                 </tr>
                 <tr>
                     <th><u>Robot_Moves</u></th>
@@ -75,6 +75,8 @@
                     <th><u>Tips_Over</u></th>
                     <th><u>Comm_Error</u></th>
                     <th><u>Poor_Construction_Integrity</u></th>
+                    <th><u>Comment</u></th>
+                    <th><u>Score</u></th>
                 </tr>
                 <c:forEach var="match" items="${matchList}">
                     <c:if test="${match.team == teamNum}">
@@ -115,6 +117,8 @@
                             <td><input type="checkbox" onClick="return false"<c:if test="${match.tip == true}">checked</c:if>></td>
                             <td><input type="checkbox" onClick="return false"<c:if test="${match.commError == true}">checked</c:if>></td>
                             <td><input type="checkbox" onClick="return false"<c:if test="${match.shotty == true}">checked</c:if>></td>
+                            <td>${match.comment}</td>
+                            <td>${match.score}</td>
                         </tr>
                     </c:if>
                 </c:forEach>
@@ -184,7 +188,7 @@
                                 <form:option value="7" label="7"/>
                                 <form:option value="8" label="8"/>
                             </form:select></td>
-                            <td><form:checkbox path="dropTote" />Able to Pick Up?</td>
+                            <td><form:checkbox path="canUp" />Able to Pick Up?</td>
                         </tr>
                         <tr>
                             <td>Speed/Agility Rating (More=Better): <form:select path="speed">
@@ -307,8 +311,8 @@
                             <td><form:checkbox path="shotty" />Poor Construction Integrity</td>
                         </tr>
                         <tr>
-                            <th>Comments<p><textarea form="form" style="height: 30px; width: 400px; background-color: white" placeholder="Enter Comments Here" maxlength="75"></textarea></th>
-                            <th>Team Score<p><textarea form="form" style="height: 16px; width: 50px; background-color: white; text-align: center; maxlength:3;"></textarea></th>
+                            <th>Comments<p><form:textarea path="comment" style="height: 30px; width: 400px; background-color: white" placeholder="Enter Comments Here" maxlength="75"></form:textarea></th>
+                            <th>Team Score<p><form:textarea path="score" form="form" style="height: 16px; width: 50px; background-color: white; text-align: center; maxlength:3;"></form:textarea></th>
                         </tr>
                     </tbody>
                 </table>
