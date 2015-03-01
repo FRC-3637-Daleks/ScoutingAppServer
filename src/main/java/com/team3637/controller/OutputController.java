@@ -72,6 +72,8 @@ public class OutputController {
     }
     
     private MatchReport averageOpp(MatchReport report ,int total) {
+        if (total < 1)
+            return report;
         report.setCoopTote((int)((float)report.getCoopTote() / total * 100));
         report.setCoopStep(report.getCoopStep() / total);
         report.setTakeCanFromStep((int)((float)report.getTakeCanFromStep() / total * 100));
@@ -80,6 +82,8 @@ public class OutputController {
     }
     
     private MatchReport averageAlly(MatchReport report, int total) {
+        if (total < 1)
+            return report;
         report.setAutoRobot((int)((float)report.getAutoRobot() / total * 100));
         report.setAutoStack(report.getAutoStack() / total);
         report.setAutoVision((int)((float)report.getAutoVision() / total * 100));
@@ -116,6 +120,7 @@ public class OutputController {
         report.setTip((int)((float)report.getTip() / total * 100));
         report.setCommError((int)((float)report.getCommError() / total * 100));
         report.setShotty((int)((float)report.getShotty() / total * 100));
+        report.setScore(report.getScore() / total);
         return report;
     }
 
@@ -135,7 +140,6 @@ public class OutputController {
 
         ModelAndView mav = new ModelAndView("report", "match", new Match());
         List<Match> matchList = matchService.findAll();
-        //System.out.println(opp1Val);
         MatchReport ally1 = new MatchReport(), ally2 = new MatchReport(), opp1 = new MatchReport(), opp2 = new MatchReport(), opp3 = new MatchReport();
         int opp1Pos = 0, opp2Pos = 0, opp3Pos = 0, ally1Pos = 0, ally2Pos = 0;
         for (int i = 0; i < matchList.size(); i++) {
@@ -145,7 +149,6 @@ public class OutputController {
                 opp1.setCoopStep(opp1.getCoopStep() + matchList.get(i).getCoopStep());
                 opp1.setTakeCanFromStep(opp1.getTakeCanFromStep() + toInt(matchList.get(i).getTakeCanFromStep()));
                 opp1.setHpThrow(opp1.getHpThrow() + toInt(matchList.get(i).getHpThrow()));
-                //System.out.println(opp1.getCoopTote() + " " + opp1.getCoopTote());
                 opp1Pos++;
             } else if(matchList.get(i).getTeam() == opp2Val) {
                 opp2.setTeam(matchList.get(i).getTeam());
@@ -186,7 +189,6 @@ public class OutputController {
                 ally1.setHpLitter(ally1.getHpLitter() + toInt(matchList.get(i).getHpLitter()));
                 ally1.setHpThrow(ally1.getHpThrow() + toInt(matchList.get(i).getHpThrow()));
                 ally1.setCanUp(ally1.getCanUp() + toInt(matchList.get(i).getCanUp()));
-                System.out.println(matchList.get(i).getCanUp());
                 ally1.setDownHeight(ally1.getDownHeight() + matchList.get(i).getDownHeight());
                 ally1.setTakeCanFromStep(ally1.getTakeCanFromStep() + toInt(matchList.get(i).getTakeCanFromStep()));
                 ally1.setCanUpSpeed(ally1.getCanUpSpeed() + matchList.get(i).getCanUpSpeed());
@@ -200,17 +202,58 @@ public class OutputController {
                 ally1.setTip(ally1.getTip() + toInt(matchList.get(i).getTip()));
                 ally1.setCommError(ally1.getCommError() + toInt(matchList.get(i).getCommError()));
                 ally1.setShotty(ally1.getShotty() + toInt(matchList.get(i).getShotty()));
-                ally1.setComment(ally1.getComment() + "\n\n" +matchList.get(i).getComment());
+                if (!matchList.get(i).getComment().equals(""))
+                    ally1.setComment(ally1.getComment() + "<li>" + matchList.get(i).getComment());
                 ally1.setScore(ally1.getScore() + matchList.get(i).getScore());
                 ally1Pos++;
             } else if(matchList.get(i).getTeam() == ally2Val) {
                 ally2.setTeam(matchList.get(i).getTeam());
+                ally2.setAutoRobot(ally2.getAutoRobot() + toInt(matchList.get(i).getAutoRobot()));
+                ally2.setAutoStack(ally2.getAutoStack() + matchList.get(i).getAutoStack());
+                ally2.setAutoVision(ally2.getAutoVision() + toInt(matchList.get(i).getAutoVision()));
+                ally2.setAutoDeadRec(ally2.getAutoDeadRec() + toInt(matchList.get(i).getAutoDeadRec()));
+                ally2.setAutoStep(ally2.getAutoStep() + toInt(matchList.get(i).getAutoStep()));
+                ally2.setAutoOverBump(ally2.getAutoOverBump() + toInt(matchList.get(i).getAutoOverBump()));
+                ally2.setAutoAroundBump(ally2.getAutoAroundBump() + toInt(matchList.get(i).getAutoAroundBump()));
+                ally2.setOverBump(ally2.getOverBump() + toInt(matchList.get(i).getOverBump()));
+                ally2.setSpeed(ally2.getSpeed() + matchList.get(i).getSpeed());
+                ally2.setDropTote(ally2.getDropTote() + toInt(matchList.get(i).getDropTote()));
+                ally2.setKnockStack(ally2.getKnockStack() + toInt(matchList.get(i).getKnockStack()));
+                ally2.setLitterCan(ally2.getLitterCan() + toInt(matchList.get(i).getLitterCan()));
+                ally2.setLitterUp(ally2.getLitterUp() + toInt(matchList.get(i).getLitterUp()));
+                ally2.setLitterPush(ally2.getLitterPush() + toInt(matchList.get(i).getLitterPush()));
+                ally2.setTotesCarried(ally2.getTotesCarried() + matchList.get(i).getTotesCarried());
+                ally2.setDiffOps(ally2.getDiffOps() + toInt(matchList.get(i).getDiffOps()));
+                ally2.setUpOrFlip(ally2.getUpOrFlip() + toInt(matchList.get(i).getUpOrFlip()));
+                ally2.setOnTopOf(ally2.getOnTopOf() + matchList.get(i).getOnTopOf());
+                ally2.setPickUpSpeed(ally2.getPickUpSpeed() + matchList.get(i).getPickUpSpeed());
+                ally2.setHpTotes(ally2.getHpTotes() + toInt(matchList.get(i).getHpTotes()));
+                ally2.setHpLitter(ally2.getHpLitter() + toInt(matchList.get(i).getHpLitter()));
+                ally2.setHpThrow(ally2.getHpThrow() + toInt(matchList.get(i).getHpThrow()));
+                ally2.setCanUp(ally2.getCanUp() + toInt(matchList.get(i).getCanUp()));
+                ally2.setDownHeight(ally2.getDownHeight() + matchList.get(i).getDownHeight());
+                ally2.setTakeCanFromStep(ally2.getTakeCanFromStep() + toInt(matchList.get(i).getTakeCanFromStep()));
+                ally2.setCanUpSpeed(ally2.getCanUpSpeed() + matchList.get(i).getCanUpSpeed());
+                ally2.setCanDiffOps(ally2.getCanDiffOps() + toInt(matchList.get(i).getCanDiffOps()));
+                ally2.setCanFromStepNoFill(ally2.getCanFromStepNoFill() + toInt(matchList.get(i).getCanFromStepNoFill()));
+                ally2.setCoopTote(ally2.getCoopTote() + toInt(matchList.get(i).getCoopTote()));
+                ally2.setCoopStep(ally2.getCoopStep() + matchList.get(i).getCoopStep());
+                ally2.setFailFunction(ally2.getFailFunction() + toInt(matchList.get(i).getFailFunction()));
+                ally2.setFouls(ally2.getFouls() + toInt(matchList.get(i).getFouls()));
+                ally2.setDeadOnArrive(ally2.getDeadOnArrive() + toInt(matchList.get(i).getDeadOnArrive()));
+                ally2.setTip(ally2.getTip() + toInt(matchList.get(i).getTip()));
+                ally2.setCommError(ally2.getCommError() + toInt(matchList.get(i).getCommError()));
+                ally2.setShotty(ally2.getShotty() + toInt(matchList.get(i).getShotty()));
+                ally2.setComment(ally2.getComment() + "<li>" + matchList.get(i).getComment());
+                ally2.setScore(ally2.getScore() + matchList.get(i).getScore());
+                ally2Pos++;
             }
         }
         opp1 = averageOpp(opp1, opp1Pos);
         opp2 = averageOpp(opp2, opp2Pos);
         opp3 = averageOpp(opp3, opp2Pos);
         ally1 = averageAlly(ally1, ally1Pos);
+        ally2 = averageAlly(ally2, ally2Pos);
 
         mav.addObject("opp1", opp1);
         mav.addObject("opp2", opp2);
@@ -218,6 +261,9 @@ public class OutputController {
         mav.addObject("ally1", ally1);
         mav.addObject("ally2", ally2);
         mav.addObject("matchList", matchList);
+        if (matchList.get(7).getComment().equals("")) {
+            System.out.println("EMPTY");
+        }
         return mav;
     }
 }

@@ -311,8 +311,8 @@
                             <td><form:checkbox path="shotty" />Poor Construction Integrity</td>
                         </tr>
                         <tr>
-                            <th>Comments<p><form:textarea path="comment" style="height: 30px; width: 400px; background-color: white" placeholder="Enter Comments Here" maxlength="75"></form:textarea></th>
-                            <th>Team Score<p><form:textarea path="score" form="form" style="height: 16px; width: 50px; background-color: white; text-align: center; maxlength:3;"></form:textarea></th>
+                            <th>Comments<p><form:textarea path="comment" style="height: 30px; width: 400px; background-color: white" placeholder="Enter Comments Here" maxlength="300"></form:textarea></th>
+                    <th>Team Score<p><form:input path="score"  style="height: 16px; width: 50px; background-color: white; text-align: center; maxlength:3;" /></th>
                         </tr>
                     </tbody>
                 </table>
