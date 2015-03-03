@@ -26,13 +26,13 @@
             </tr>
             <c:forEach var="schedule" items="${scheduleList}">
             <tr>
-                <td>${schedule.matchNum}</td>
-                <td><a href="${pageContext.request.contextPath}/input/create.html?matchNum=${schedule.matchNum}&teamNum=${schedule.b1}">${schedule.b1}</a></td>
-                <td><a href="${pageContext.request.contextPath}/input/create.html?matchNum=${schedule.matchNum}&teamNum=${schedule.b2}">${schedule.b2}</a></td>
-                <td><a href="${pageContext.request.contextPath}/input/create.html?matchNum=${schedule.matchNum}&teamNum=${schedule.b3}">${schedule.b3}</a></td>
-                <td><a href="${pageContext.request.contextPath}/input/create.html?matchNum=${schedule.matchNum}&teamNum=${schedule.r1}">${schedule.r1}</a></td>
-                <td><a href="${pageContext.request.contextPath}/input/create.html?matchNum=${schedule.matchNum}&teamNum=${schedule.r2}"${schedule.r2}>${schedule.r2}</a></td>
-                <td><a href="${pageContext.request.contextPath}/input/create.html?matchNum=${schedule.matchNum}&teamNum=${schedule.r3}">${schedule.r3}</a></td>
+                <td class="report">${schedule.matchNum}</td>
+                <td class="blue"><a href="${pageContext.request.contextPath}/input/create.html?matchNum=${schedule.matchNum}&teamNum=${schedule.b1}">${schedule.b1}</a></td>
+                <td class="blue"><a href="${pageContext.request.contextPath}/input/create.html?matchNum=${schedule.matchNum}&teamNum=${schedule.b2}">${schedule.b2}</a></td>
+                <td class="blue"><a href="${pageContext.request.contextPath}/input/create.html?matchNum=${schedule.matchNum}&teamNum=${schedule.b3}">${schedule.b3}</a></td>
+                <td class="red"><a href="${pageContext.request.contextPath}/input/create.html?matchNum=${schedule.matchNum}&teamNum=${schedule.r1}">${schedule.r1}</a></td>
+                <td class="red"><a href="${pageContext.request.contextPath}/input/create.html?matchNum=${schedule.matchNum}&teamNum=${schedule.r2}"${schedule.r2}>${schedule.r2}</a></td>
+                <td class="red"><a href="${pageContext.request.contextPath}/input/create.html?matchNum=${schedule.matchNum}&teamNum=${schedule.r3}">${schedule.r3}</a></td>
             </tr>
             </c:forEach>
     </table>
@@ -48,6 +48,20 @@
                     window.location = link;
                 }
             }); 
+            $('.report').click(function(){
+                r1 = $(this).parent().find('a:first').text();
+                r2 = $(this).parent().find('a:second').text();
+                r3 = $(this).parent().find('a:third').text();
+                b1 = $(this).parent().find('a:forth').text();
+                b2 = $(this).parent().find('a:fifth').text();
+                b3 = $(this).parent().find('a:sixth').text();
+                console.log(r1);
+                console.log(r2);
+                console.log(r3);
+                console.log(b1);
+                console.log(b2);
+                console.log(b3);
+            });
         });
         if (msg !== "") {
             alert(msg);

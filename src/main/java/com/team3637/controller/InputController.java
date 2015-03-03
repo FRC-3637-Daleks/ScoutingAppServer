@@ -20,7 +20,6 @@ import com.team3637.exception.MatchNotFound;
 import com.team3637.model.Match;
 import com.team3637.service.MatchService;
 import com.team3637.validation.MatchValidator;
-import com.team3637.exception.ScheduleNotFound;
 import com.team3637.model.Schedule;
 import com.team3637.service.ScheduleService;
 import com.team3637.validation.ScheduleValidator;

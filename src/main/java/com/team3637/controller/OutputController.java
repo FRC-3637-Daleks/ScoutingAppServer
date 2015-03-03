@@ -125,8 +125,10 @@ public class OutputController {
     }
 
     @RequestMapping(value="/report", method=RequestMethod.GET)
-    public String reportRedirct() {
-        return "redirect:/output/report.html?ally1=1&ally2=2&opp1=3&opp2=4&opp3=5";
+    public String reportRedirct(final RedirectAttributes redirectAttributes) {
+        String message = "Error: No teams were specified in the request";
+        redirectAttributes.addFlashAttribute("message", message);
+        return "redirect:/input/schedule.html";
     }
     
     @RequestMapping(value="/report",params = {"ally1", "ally2", "opp1", "opp2", "opp3"}, method=RequestMethod.GET)
@@ -261,9 +263,6 @@ public class OutputController {
         mav.addObject("ally1", ally1);
         mav.addObject("ally2", ally2);
         mav.addObject("matchList", matchList);
-        if (matchList.get(7).getComment().equals("")) {
-            System.out.println("EMPTY");
-        }
         return mav;
     }
 }
