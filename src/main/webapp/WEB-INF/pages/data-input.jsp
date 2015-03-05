@@ -53,7 +53,7 @@
                     <th><u>Puts_into_Container</u></th>
                     <th><u>Pick_up?</u></th>
                     <th><u>Push</u></th>
-                    <th><u>#of_Totes_Carried</u></th>
+                    <th><u>#of_Totes_Carried at Once</u></th>
                     <th><u>Different_Orientations</u></th>
                     <th><u>Pick_up/Flip_Upside_Down</u></th>
                     <th><u>Place_On_Top</u></th>
@@ -177,7 +177,7 @@
                         </tr>
                         <tr>
                             <td><form:checkbox path="overBump" />Over Platform?</td>
-                            <td># of Totes Carried: <form:select path="totesCarried">
+                            <td># of Totes Carried at Once: <form:select path="totesCarried">
                                 <form:option value="0" label="0"/>0
                                 <form:option value="1" label="1"/>
                                 <form:option value="2" label="2"/>

@@ -124,6 +124,14 @@ public class OutputController {
         return report;
     }
 
+    @RequestMapping(value="/select", method=RequestMethod.GET)
+	public ModelAndView matchSelectPage() {
+		ModelAndView mav = new ModelAndView("report-select");
+		List<Schedule> scheduleList = scheduleService.findAll();
+		mav.addObject("scheduleList", scheduleList);
+		return mav;
+	}
+    
     @RequestMapping(value="/report", method=RequestMethod.GET)
     public String reportRedirct(final RedirectAttributes redirectAttributes) {
         String message = "Error: No teams were specified in the request";
