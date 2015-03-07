@@ -216,3 +216,5 @@ pip-log.txt
 /src/main/webapp/META-INF/maven/com/dpr-data/target/
 
 target/
+
+data/
