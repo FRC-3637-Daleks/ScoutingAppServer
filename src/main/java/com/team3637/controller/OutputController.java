@@ -72,7 +72,7 @@ public class OutputController {
     public String reportRedirct(final RedirectAttributes redirectAttributes) {
         String message = "Error: No teams were specified in the request";
         redirectAttributes.addFlashAttribute("message", message);
-        return "redirect:/input/schedule.html";
+        return "redirect:/output/select.html";
     }
     
     @RequestMapping(value="/report",params = {"ally1", "ally2", "opp1", "opp2", "opp3"}, method=RequestMethod.GET)
@@ -87,12 +87,12 @@ public class OutputController {
         ModelAndView mav = new ModelAndView("report", "match", new Match());
         List<Match> matchList = matchService.findAll();
         List<Match> opp1List = new ArrayList<>(), opp2List = new ArrayList<>(), opp3List = new ArrayList<>(), ally1List = new ArrayList<>(), ally2List = new ArrayList<>();
-        
+        MatchReport ally1, ally2, opp1, opp2, opp3;
         AverageVals avg = new AverageVals();
         for (Match match : matchList) {
-            if(match.getTeam() == opp1Val) {
+            if(match.getTeam().equals(opp1Val)) {
                 opp1List.add(match);
-            } else if(match.getTeam() == opp2Val) {
+            } else if(match.getTeam().equals(opp2Val)) {
                 opp2List.add(match);
             } else if(match.getTeam() == opp3Val) {
                 opp3List.add(match);
@@ -101,8 +101,12 @@ public class OutputController {
             } else if(match.getTeam() == ally2Val) {
                 ally2List.add(match);
             }
-        } MatchReport ally1 = avg.addAlly(ally1List), ally2 = avg.addAlly(ally2List), opp1 = avg.addOpp(opp1List), opp2 = avg.addOpp(opp2List), opp3 = avg.addOpp(opp3List);
-
+        } 
+        ally1 = avg.addAlly(ally1List);
+        ally2 = avg.addAlly(ally2List);
+        opp1 = avg.addAlly(opp1List);
+        opp2 = avg.addAlly(opp2List);
+        opp3 = avg.addAlly(opp3List);
         mav.addObject("opp1", opp1);
         mav.addObject("opp2", opp2);
         mav.addObject("opp3", opp3);
