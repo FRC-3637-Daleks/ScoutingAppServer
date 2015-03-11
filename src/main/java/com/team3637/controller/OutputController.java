@@ -25,9 +25,11 @@ import com.team3637.service.MatchService;
 import com.team3637.validation.MatchValidator;
 import com.team3637.exception.ScheduleNotFound;
 import com.team3637.model.Schedule;
+import com.team3637.other.AverageVals;
 import com.team3637.service.ScheduleService;
 import com.team3637.validation.MatchReportValidator;
 import com.team3637.validation.ScheduleValidator;
+import java.util.ArrayList;
 
 
 @Controller
@@ -58,67 +60,6 @@ public class OutputController {
             binder.setValidator(matchReportValidator);
     }
 
-    private int toInt(boolean bool) {
-        if(bool) {
-            return 1;
-        } else {
-            return 0;
-        }
-    }
-    
-    private MatchReport averageOpp(MatchReport report ,int total) {
-        if (total < 1)
-            return report;
-        report.setCoopTote((int)((float)report.getCoopTote() / total * 100));
-        report.setCoopStep(report.getCoopStep() / total);
-        report.setTakeCanFromStep((int)((float)report.getTakeCanFromStep() / total * 100));
-        report.setHpThrow((int)((float)report.getHpThrow() / total * 100));
-        return report;
-    }
-    
-    private MatchReport averageAlly(MatchReport report, int total) {
-        if (total < 1)
-            return report;
-        report.setAutoRobot((int)((float)report.getAutoRobot() / total * 100), null);
-        report.setAutoStack(report.getAutoStack() / total);
-        report.setAutoVision((int)((float)report.getAutoVision() / total * 100));
-        report.setAutoDeadRec((int)((float)report.getAutoDeadRec() / total * 100));
-        report.setAutoStep((int)((float)report.getAutoStep() / total * 100));
-        report.setAutoOverBump((int)((float)report.getAutoOverBump() / total * 100));
-        report.setAutoAroundBump((int)((float)report.getAutoAroundBump() / total * 100));
-        report.setOverBump((int)((float)report.getOverBump() / total * 100));
-        report.setSpeed(report.getSpeed() / total);
-        report.setDropTote((int)((float)report.getDropTote() / total * 100));
-        report.setKnockStack((int)((float)report.getKnockStack() / total * 100));
-        report.setLitterCan((int)((float)report.getLitterCan() / total * 100));
-        report.setLitterUp((int)((float)report.getLitterUp() / total * 100));
-        report.setLitterPush((int)((float)report.getLitterPush() / total * 100));
-        report.setTotesCarried(report.getTotesCarried() / total);
-        report.setDiffOps((int)((float)report.getDiffOps() / total * 100));
-        report.setUpOrFlip((int)((float)report.getUpOrFlip() / total * 100));
-        report.setOnTopOf(report.getOnTopOf() / total);
-        report.setPickUpSpeed(report.getPickUpSpeed() / total);
-        report.setHpTotes((int)((float)report.getHpTotes() / total * 100));
-        report.setHpLitter((int)((float)report.getHpLitter() / total * 100));
-        report.setHpThrow((int)((float)report.getHpThrow() / total * 100));
-        report.setCanUp((int)((float)report.getCanUp() / total * 100));
-        report.setDownHeight(report.getDownHeight() / total);
-        report.setTakeCanFromStep((int)((float)report.getTakeCanFromStep() / total * 100));
-        report.setCanUpSpeed(report.getCanUpSpeed() / total);
-        report.setCanDiffOps((int)((float)report.getCanDiffOps() / total * 100));
-        report.setCanFromStepNoFill((int)((float)report.getCanFromStepNoFill() / total * 100));
-        report.setCoopTote((int)((float)report.getCoopTote() / total * 100));
-        report.setCoopStep(report.getCoopStep() / total);
-        report.setFailFunction((int)((float)report.getFailFunction() / total * 100));
-        report.setFouls((int)((float)report.getFouls() / total * 100));
-        report.setDeadOnArrive((int)((float)report.getDeadOnArrive() / total * 100));
-        report.setTip((int)((float)report.getTip() / total * 100));
-        report.setCommError((int)((float)report.getCommError() / total * 100));
-        report.setShotty((int)((float)report.getShotty() / total * 100));
-        report.setScore(report.getScore() / total);
-        return report;
-    }
-
     @RequestMapping(value="/select", method=RequestMethod.GET)
 	public ModelAndView matchSelectPage() {
 		ModelAndView mav = new ModelAndView("report-select");
@@ -145,120 +86,22 @@ public class OutputController {
 
         ModelAndView mav = new ModelAndView("report", "match", new Match());
         List<Match> matchList = matchService.findAll();
-        MatchReport ally1 = new MatchReport(), ally2 = new MatchReport(), opp1 = new MatchReport(), opp2 = new MatchReport(), opp3 = new MatchReport();
-        int opp1Pos = 0, opp2Pos = 0, opp3Pos = 0, ally1Pos = 0, ally2Pos = 0;
-        for (int i = 0; i < matchList.size(); i++) {
-            if(matchList.get(i).getTeam() == opp1Val) {
-                opp1.setTeam(matchList.get(i).getTeam());
-                opp1.setCoopTote(opp1.getCoopTote() + toInt(matchList.get(i).getCoopTote()));
-                opp1.setCoopStep(opp1.getCoopStep() + matchList.get(i).getCoopStep());
-                opp1.setTakeCanFromStep(opp1.getTakeCanFromStep() + toInt(matchList.get(i).getTakeCanFromStep()));
-                opp1.setHpThrow(opp1.getHpThrow() + toInt(matchList.get(i).getHpThrow()));
-                opp1Pos++;
-            } else if(matchList.get(i).getTeam() == opp2Val) {
-                opp2.setTeam(matchList.get(i).getTeam());
-                opp2.setCoopTote(opp2.getCoopTote() + toInt(matchList.get(i).getCoopTote()));
-                opp2.setCoopStep(opp2.getCoopStep() + matchList.get(i).getCoopStep());
-                opp2.setTakeCanFromStep(opp2.getTakeCanFromStep() + toInt(matchList.get(i).getTakeCanFromStep()));
-                opp2.setHpThrow(opp2.getHpThrow() + toInt(matchList.get(i).getHpThrow()));
-                opp2Pos++;
-            } else if(matchList.get(i).getTeam() == opp3Val) {
-                opp3.setTeam(matchList.get(i).getTeam());
-                opp3.setCoopTote(opp3.getCoopTote() + toInt(matchList.get(i).getCoopTote()));
-                opp3.setCoopStep(opp3.getCoopStep() + matchList.get(i).getCoopStep());
-                opp3.setTakeCanFromStep(opp3.getTakeCanFromStep() + toInt(matchList.get(i).getTakeCanFromStep()));
-                opp3.setHpThrow(opp3.getHpThrow() + toInt(matchList.get(i).getHpThrow()));
-                opp3Pos++;
-            } else if(matchList.get(i).getTeam() == ally1Val) {
-                ally1.setTeam(matchList.get(i).getTeam());
-                ally1.setAutoRobot(ally1.getAutoRobot() + toInt(matchList.get(i).getAutoRobot()), null);
-                ally1.setAutoStack(ally1.getAutoStack() + matchList.get(i).getAutoStack());
-                ally1.setAutoVision(ally1.getAutoVision() + toInt(matchList.get(i).getAutoVision()));
-                ally1.setAutoDeadRec(ally1.getAutoDeadRec() + toInt(matchList.get(i).getAutoDeadRec()));
-                ally1.setAutoStep(ally1.getAutoStep() + toInt(matchList.get(i).getAutoStep()));
-                ally1.setAutoOverBump(ally1.getAutoOverBump() + toInt(matchList.get(i).getAutoOverBump()));
-                ally1.setAutoAroundBump(ally1.getAutoAroundBump() + toInt(matchList.get(i).getAutoAroundBump()));
-                ally1.setOverBump(ally1.getOverBump() + toInt(matchList.get(i).getOverBump()));
-                ally1.setSpeed(ally1.getSpeed() + matchList.get(i).getSpeed());
-                ally1.setDropTote(ally1.getDropTote() + toInt(matchList.get(i).getDropTote()));
-                ally1.setKnockStack(ally1.getKnockStack() + toInt(matchList.get(i).getKnockStack()));
-                ally1.setLitterCan(ally1.getLitterCan() + toInt(matchList.get(i).getLitterCan()));
-                ally1.setLitterUp(ally1.getLitterUp() + toInt(matchList.get(i).getLitterUp()));
-                ally1.setLitterPush(ally1.getLitterPush() + toInt(matchList.get(i).getLitterPush()));
-                ally1.setTotesCarried(ally1.getTotesCarried() + matchList.get(i).getTotesCarried());
-                ally1.setDiffOps(ally1.getDiffOps() + toInt(matchList.get(i).getDiffOps()));
-                ally1.setUpOrFlip(ally1.getUpOrFlip() + toInt(matchList.get(i).getUpOrFlip()));
-                ally1.setOnTopOf(ally1.getOnTopOf() + matchList.get(i).getOnTopOf());
-                ally1.setPickUpSpeed(ally1.getPickUpSpeed() + matchList.get(i).getPickUpSpeed());
-                ally1.setHpTotes(ally1.getHpTotes() + toInt(matchList.get(i).getHpTotes()));
-                ally1.setHpLitter(ally1.getHpLitter() + toInt(matchList.get(i).getHpLitter()));
-                ally1.setHpThrow(ally1.getHpThrow() + toInt(matchList.get(i).getHpThrow()));
-                ally1.setCanUp(ally1.getCanUp() + toInt(matchList.get(i).getCanUp()));
-                ally1.setDownHeight(ally1.getDownHeight() + matchList.get(i).getDownHeight());
-                ally1.setTakeCanFromStep(ally1.getTakeCanFromStep() + toInt(matchList.get(i).getTakeCanFromStep()));
-                ally1.setCanUpSpeed(ally1.getCanUpSpeed() + matchList.get(i).getCanUpSpeed());
-                ally1.setCanDiffOps(ally1.getCanDiffOps() + toInt(matchList.get(i).getCanDiffOps()));
-                ally1.setCanFromStepNoFill(ally1.getCanFromStepNoFill() + toInt(matchList.get(i).getCanFromStepNoFill()));
-                ally1.setCoopTote(ally1.getCoopTote() + toInt(matchList.get(i).getCoopTote()));
-                ally1.setCoopStep(ally1.getCoopStep() + matchList.get(i).getCoopStep());
-                ally1.setFailFunction(ally1.getFailFunction() + toInt(matchList.get(i).getFailFunction()));
-                ally1.setFouls(ally1.getFouls() + toInt(matchList.get(i).getFouls()));
-                ally1.setDeadOnArrive(ally1.getDeadOnArrive() + toInt(matchList.get(i).getDeadOnArrive()));
-                ally1.setTip(ally1.getTip() + toInt(matchList.get(i).getTip()));
-                ally1.setCommError(ally1.getCommError() + toInt(matchList.get(i).getCommError()));
-                ally1.setShotty(ally1.getShotty() + toInt(matchList.get(i).getShotty()));
-                if (!matchList.get(i).getComment().equals(""))
-                    ally1.setComment(ally1.getComment() + "<li>" + matchList.get(i).getComment());
-                ally1.setScore(ally1.getScore() + matchList.get(i).getScore());
-                ally1Pos++;
-            } else if(matchList.get(i).getTeam() == ally2Val) {
-                ally2.setTeam(matchList.get(i).getTeam());
-                ally2.setAutoRobot(ally2.getAutoRobot() + toInt(matchList.get(i).getAutoRobot()), null);
-                ally2.setAutoStack(ally2.getAutoStack() + matchList.get(i).getAutoStack());
-                ally2.setAutoVision(ally2.getAutoVision() + toInt(matchList.get(i).getAutoVision()));
-                ally2.setAutoDeadRec(ally2.getAutoDeadRec() + toInt(matchList.get(i).getAutoDeadRec()));
-                ally2.setAutoStep(ally2.getAutoStep() + toInt(matchList.get(i).getAutoStep()));
-                ally2.setAutoOverBump(ally2.getAutoOverBump() + toInt(matchList.get(i).getAutoOverBump()));
-                ally2.setAutoAroundBump(ally2.getAutoAroundBump() + toInt(matchList.get(i).getAutoAroundBump()));
-                ally2.setOverBump(ally2.getOverBump() + toInt(matchList.get(i).getOverBump()));
-                ally2.setSpeed(ally2.getSpeed() + matchList.get(i).getSpeed());
-                ally2.setDropTote(ally2.getDropTote() + toInt(matchList.get(i).getDropTote()));
-                ally2.setKnockStack(ally2.getKnockStack() + toInt(matchList.get(i).getKnockStack()));
-                ally2.setLitterCan(ally2.getLitterCan() + toInt(matchList.get(i).getLitterCan()));
-                ally2.setLitterUp(ally2.getLitterUp() + toInt(matchList.get(i).getLitterUp()));
-                ally2.setLitterPush(ally2.getLitterPush() + toInt(matchList.get(i).getLitterPush()));
-                ally2.setTotesCarried(ally2.getTotesCarried() + matchList.get(i).getTotesCarried());
-                ally2.setDiffOps(ally2.getDiffOps() + toInt(matchList.get(i).getDiffOps()));
-                ally2.setUpOrFlip(ally2.getUpOrFlip() + toInt(matchList.get(i).getUpOrFlip()));
-                ally2.setOnTopOf(ally2.getOnTopOf() + matchList.get(i).getOnTopOf());
-                ally2.setPickUpSpeed(ally2.getPickUpSpeed() + matchList.get(i).getPickUpSpeed());
-                ally2.setHpTotes(ally2.getHpTotes() + toInt(matchList.get(i).getHpTotes()));
-                ally2.setHpLitter(ally2.getHpLitter() + toInt(matchList.get(i).getHpLitter()));
-                ally2.setHpThrow(ally2.getHpThrow() + toInt(matchList.get(i).getHpThrow()));
-                ally2.setCanUp(ally2.getCanUp() + toInt(matchList.get(i).getCanUp()));
-                ally2.setDownHeight(ally2.getDownHeight() + matchList.get(i).getDownHeight());
-                ally2.setTakeCanFromStep(ally2.getTakeCanFromStep() + toInt(matchList.get(i).getTakeCanFromStep()));
-                ally2.setCanUpSpeed(ally2.getCanUpSpeed() + matchList.get(i).getCanUpSpeed());
-                ally2.setCanDiffOps(ally2.getCanDiffOps() + toInt(matchList.get(i).getCanDiffOps()));
-                ally2.setCanFromStepNoFill(ally2.getCanFromStepNoFill() + toInt(matchList.get(i).getCanFromStepNoFill()));
-                ally2.setCoopTote(ally2.getCoopTote() + toInt(matchList.get(i).getCoopTote()));
-                ally2.setCoopStep(ally2.getCoopStep() + matchList.get(i).getCoopStep());
-                ally2.setFailFunction(ally2.getFailFunction() + toInt(matchList.get(i).getFailFunction()));
-                ally2.setFouls(ally2.getFouls() + toInt(matchList.get(i).getFouls()));
-                ally2.setDeadOnArrive(ally2.getDeadOnArrive() + toInt(matchList.get(i).getDeadOnArrive()));
-                ally2.setTip(ally2.getTip() + toInt(matchList.get(i).getTip()));
-                ally2.setCommError(ally2.getCommError() + toInt(matchList.get(i).getCommError()));
-                ally2.setShotty(ally2.getShotty() + toInt(matchList.get(i).getShotty()));
-                ally2.setComment(ally2.getComment() + "<li>" + matchList.get(i).getComment());
-                ally2.setScore(ally2.getScore() + matchList.get(i).getScore());
-                ally2Pos++;
+        List<Match> opp1List = new ArrayList<>(), opp2List = new ArrayList<>(), opp3List = new ArrayList<>(), ally1List = new ArrayList<>(), ally2List = new ArrayList<>();
+        
+        AverageVals avg = new AverageVals();
+        for (Match match : matchList) {
+            if(match.getTeam() == opp1Val) {
+                opp1List.add(match);
+            } else if(match.getTeam() == opp2Val) {
+                opp2List.add(match);
+            } else if(match.getTeam() == opp3Val) {
+                opp3List.add(match);
+            } else if(match.getTeam() == ally1Val) {
+                ally1List.add(match);
+            } else if(match.getTeam() == ally2Val) {
+                ally2List.add(match);
             }
-        }
-        opp1 = averageOpp(opp1, opp1Pos);
-        opp2 = averageOpp(opp2, opp2Pos);
-        opp3 = averageOpp(opp3, opp2Pos);
-        ally1 = averageAlly(ally1, ally1Pos);
-        ally2 = averageAlly(ally2, ally2Pos);
+        } MatchReport ally1 = avg.addAlly(ally1List), ally2 = avg.addAlly(ally2List), opp1 = avg.addOpp(opp1List), opp2 = avg.addOpp(opp2List), opp3 = avg.addOpp(opp3List);
 
         mav.addObject("opp1", opp1);
         mav.addObject("opp2", opp2);
