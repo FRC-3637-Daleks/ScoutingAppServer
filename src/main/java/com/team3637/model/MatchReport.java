@@ -6,310 +6,196 @@ public class MatchReport {
 
     private Integer autoRobot = 0;
 
-    private Integer autoStack = 0;
+    private Integer autoTote = 0;
+    
+    private Integer autoCan = 0;
+    
+    private Integer startTL = 0;
+    
+    private Integer startTM = 0;
 
-    private Integer autoVision = 0;
-
-    private Integer autoDeadRec = 0;
-
-    private Integer autoStep = 0;
-
-    private Integer autoOverBump = 0;
-
-    private Integer autoAroundBump = 0;
-
-    private Integer overBump = 0;
-
-    private Integer speed = 0;
-
-    private Integer dropTote = 0;
-
-    private Integer knockStack = 0;
-
-    private Integer litterCan = 0;
-
-    private Integer litterUp = 0;
-
-    private Integer litterPush = 0;
-
-    private Integer totesCarried = 0;
-
-    private Integer diffOps = 0;
-
-    private Integer upOrFlip = 0;
-
-    private Integer onTopOf = 0;
-
-    private Integer pickUpSpeed = 0;
-
-    private Integer hpTotes = 0;
-
-    private Integer hpLitter = 0;
-
-    private Integer hpThrow = 0;
-
-    private Integer canUp = 0;
-
-    private Integer downHeight = 0;
-
-    private Integer takeCanFromStep = 0;
-
-    private Integer canUpSpeed = 0;
-
-    private Integer canDiffOps = 0;
-
-    private Integer canFromStepNoFill = 0;
-
+    private Integer startTR = 0;
+    
+    private Integer startLL = 0;
+    
+    private Integer startLM = 0;
+    
+    private Integer startLR = 0;
+    
+    private Integer styleHS = 0;
+    
+    private Integer styleTopper = 0;
+    
+    private Integer styleLitterCan = 0;
+    
+    private Integer styleLandfill = 0;
+    
+    private Integer styleThrow = 0;
+    
+    private Integer styleSingleStack = 0;
+    
+    private Integer styleMakeAtOnce = 0;
+    
+    private Integer styleCanFromStep = 0;
+    
     private Integer coopTote = 0;
 
     private Integer coopStep = 0;
 
-    private Integer failFunction = 0;
+    private Integer knockStack = 0;
 
-    private Integer fouls = 0;
-
-    private Integer deadOnArrive = 0;
+    private Integer dead = 0;
+    
+    private Integer unstable = 0;
 
     private Integer tip = 0;
-
-    private Integer commError = 0;
-
-    private Integer shotty = 0;
 
     private String comment = "";
     
     private Integer score = 0;
 
     public Integer getTeam() {
-            return team;
+        return team;
     }
 
     public void setTeam(Integer team) {
-            this.team = team;
+        this.team = team;
     }
 
     public Integer getAutoRobot() {
         return autoRobot;
     }
 
-    public void setAutoRobot(Integer autoRobot) {
-        this.autoRobot = autoRobot;
+    public void setAutoRobot(Integer autoCan) {
+        this.autoRobot = autoCan;
     }
 
-    public Integer getAutoStack() {
-        return autoStack;
+    public Integer getAutoTote() {
+        return autoTote;
     }
 
-    public void setAutoStack(Integer autoStack) {
-        this.autoStack = autoStack;
+    public void setAutoTote(Integer autoTote) {
+        this.autoTote = autoTote;
     }
 
-    public Integer getAutoVision() {
-        return autoVision;
+    public Integer getAutoCan() {
+        return autoCan;
     }
 
-    public void setAutoVision(Integer autoVision) {
-        this.autoVision = autoVision;
+    public void setAutoCan(Integer autoCan) {
+        this.autoCan = autoCan;
     }
 
-    public Integer getAutoDeadRec() {
-        return autoDeadRec;
+    public Integer getStartTL() {
+        return startTL;
     }
 
-    public void setAutoDeadRec(Integer autoDeadRec) {
-        this.autoDeadRec = autoDeadRec;
+    public void setStartTL(Integer startTL) {
+        this.startTL = startTL;
     }
 
-    public Integer getAutoStep() {
-        return autoStep;
+    public Integer getStartTM() {
+        return startTM;
     }
 
-    public void setAutoStep(Integer autoStep) {
-        this.autoStep = autoStep;
+    public void setStartTM(Integer startTM) {
+        this.startTM = startTM;
     }
 
-    public Integer getAutoOverBump() {
-        return autoOverBump;
+    public Integer getStartTR() {
+        return startTR;
     }
 
-    public void setAutoOverBump(Integer autoOverBump) {
-        this.autoOverBump = autoOverBump;
+    public void setStartTR(Integer startTR) {
+        this.startTR = startTR;
     }
 
-    public Integer getAutoAroundBump() {
-        return autoAroundBump;
+    public Integer getStartLL() {
+        return startLL;
     }
 
-    public void setAutoAroundBump(Integer autoAroundBump) {
-        this.autoAroundBump = autoAroundBump;
+    public void setStartLL(Integer startLL) {
+        this.startLL = startLL;
     }
 
-    public Integer getOverBump() {
-        return overBump;
+    public Integer getStartLM() {
+        return startLM;
     }
 
-    public void setOverBump(Integer overBump) {
-        this.overBump = overBump;
+    public void setStartLM(Integer startLM) {
+        this.startLM = startLM;
     }
 
-    public Integer getSpeed() {
-        return speed;
+    public Integer getStartLR() {
+        return startLR;
     }
 
-    public void setSpeed(Integer speed) {
-        this.speed = speed;
+    public void setStartLR(Integer startLR) {
+        this.startLR = startLR;
     }
 
-    public Integer getDropTote() {
-        return dropTote;
+    public Integer getStyleHS() {
+        return styleHS;
     }
 
-    public void setDropTote(Integer dropTote) {
-        this.dropTote = dropTote;
+    public void setStyleHS(Integer styleHS) {
+        this.styleHS = styleHS;
     }
 
-    public Integer getKnockStack() {
-        return knockStack;
+    public Integer getStyleTopper() {
+        return styleTopper;
     }
 
-    public void setKnockStack(Integer knockStack) {
-        this.knockStack = knockStack;
+    public void setStyleTopper(Integer styleTopper) {
+        this.styleTopper = styleTopper;
     }
 
-    public Integer getLitterCan() {
-        return litterCan;
+    public Integer getStyleLitterCan() {
+        return styleLitterCan;
     }
 
-    public void setLitterCan(Integer litterCan) {
-        this.litterCan = litterCan;
+    public void setStyleLitterCan(Integer styleLitterCan) {
+        this.styleLitterCan = styleLitterCan;
     }
 
-    public Integer getLitterUp() {
-        return litterUp;
+    public Integer getStyleLandfill() {
+        return styleLandfill;
     }
 
-    public void setLitterUp(Integer litterUp) {
-        this.litterUp = litterUp;
+    public void setStyleLandfill(Integer styleLandfill) {
+        this.styleLandfill = styleLandfill;
     }
 
-    public Integer getLitterPush() {
-        return litterPush;
+    public Integer getStyleThrow() {
+        return styleThrow;
     }
 
-    public void setLitterPush(Integer litterPush) {
-        this.litterPush = litterPush;
+    public void setStyleThrow(Integer styleThrow) {
+        this.styleThrow = styleThrow;
     }
 
-    public Integer getTotesCarried() {
-        return totesCarried;
+    public Integer getStyleSingleStack() {
+        return styleSingleStack;
     }
 
-    public void setTotesCarried(Integer totesCarried) {
-        this.totesCarried = totesCarried;
+    public void setStyleSingleStack(Integer styleSingleStack) {
+        this.styleSingleStack = styleSingleStack;
     }
 
-    public Integer getDiffOps() {
-        return diffOps;
+    public Integer getStyleMakeAtOnce() {
+        return styleMakeAtOnce;
     }
 
-    public void setDiffOps(Integer diffOps) {
-        this.diffOps = diffOps;
+    public void setStyleMakeAtOnce(Integer styleMakeAtOnce) {
+        this.styleMakeAtOnce = styleMakeAtOnce;
     }
 
-    public Integer getUpOrFlip() {
-        return upOrFlip;
+    public Integer getStyleCanFromStep() {
+        return styleCanFromStep;
     }
 
-    public void setUpOrFlip(Integer upOrFlip) {
-        this.upOrFlip = upOrFlip;
-    }
-
-    public Integer getOnTopOf() {
-        return onTopOf;
-    }
-
-    public void setOnTopOf(Integer onTopOf) {
-        this.onTopOf = onTopOf;
-    }
-
-    public Integer getPickUpSpeed() {
-        return pickUpSpeed;
-    }
-
-    public void setPickUpSpeed(Integer pickUpSpeed) {
-        this.pickUpSpeed = pickUpSpeed;
-    }
-
-    public Integer getHpTotes() {
-        return hpTotes;
-    }
-
-    public void setHpTotes(Integer hpTotes) {
-        this.hpTotes = hpTotes;
-    }
-
-    public Integer getHpLitter() {
-        return hpLitter;
-    }
-
-    public void setHpLitter(Integer hpLitter) {
-        this.hpLitter = hpLitter;
-    }
-
-    public Integer getHpThrow() {
-        return hpThrow;
-    }
-
-    public void setHpThrow(Integer hpThrow) {
-        this.hpThrow = hpThrow;
-    }
-
-    public Integer getCanUp() {
-        return canUp;
-    }
-
-    public void setCanUp(Integer canUp) {
-        this.canUp = canUp;
-    }
-
-    public Integer getDownHeight() {
-        return downHeight;
-    }
-
-    public void setDownHeight(Integer downHeight) {
-        this.downHeight = downHeight;
-    }
-
-    public Integer getTakeCanFromStep() {
-        return takeCanFromStep;
-    }
-
-    public void setTakeCanFromStep(Integer takeCanFromStep) {
-        this.takeCanFromStep = takeCanFromStep;
-    }
-
-    public Integer getCanUpSpeed() {
-        return canUpSpeed;
-    }
-
-    public void setCanUpSpeed(Integer canUpSpeed) {
-        this.canUpSpeed = canUpSpeed;
-    }
-
-    public Integer getCanDiffOps() {
-        return canDiffOps;
-    }
-
-    public void setCanDiffOps(Integer canDiffOps) {
-        this.canDiffOps = canDiffOps;
-    }
-
-    public Integer getCanFromStepNoFill() {
-        return canFromStepNoFill;
-    }
-
-    public void setCanFromStepNoFill(Integer canFromStepNoFill) {
-        this.canFromStepNoFill = canFromStepNoFill;
+    public void setStyleCanFromStep(Integer styleCanFromStep) {
+        this.styleCanFromStep = styleCanFromStep;
     }
 
     public Integer getCoopTote() {
@@ -328,28 +214,28 @@ public class MatchReport {
         this.coopStep = coopStep;
     }
 
-    public Integer getFailFunction() {
-        return failFunction;
+    public Integer getKnockStack() {
+        return knockStack;
     }
 
-    public void setFailFunction(Integer failFunction) {
-        this.failFunction = failFunction;
+    public void setKnockStack(Integer knockStack) {
+        this.knockStack = knockStack;
     }
 
-    public Integer getFouls() {
-        return fouls;
+    public Integer getDead() {
+        return dead;
     }
 
-    public void setFouls(Integer fouls) {
-        this.fouls = fouls;
+    public void setDead(Integer dead) {
+        this.dead = dead;
     }
 
-    public Integer getDeadOnArrive() {
-        return deadOnArrive;
+    public Integer getUnstable() {
+        return unstable;
     }
 
-    public void setDeadOnArrive(Integer deadOnArrive) {
-        this.deadOnArrive = deadOnArrive;
+    public void setUnstable(Integer unstable) {
+        this.unstable = unstable;
     }
 
     public Integer getTip() {
@@ -358,22 +244,6 @@ public class MatchReport {
 
     public void setTip(Integer tip) {
         this.tip = tip;
-    }
-
-    public Integer getCommError() {
-        return commError;
-    }
-
-    public void setCommError(Integer commError) {
-        this.commError = commError;
-    }
-
-    public Integer getShotty() {
-        return shotty;
-    }
-
-    public void setShotty(Integer shotty) {
-        this.shotty = shotty;
     }
 
     public String getComment() {
@@ -391,4 +261,6 @@ public class MatchReport {
     public void setScore(Integer score) {
         this.score = score;
     }
+    
+    
 }

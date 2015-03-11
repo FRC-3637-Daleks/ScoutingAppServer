@@ -45,8 +45,9 @@ public class InputController {
 
 	@RequestMapping(value="/create", method=RequestMethod.GET)
 	public ModelAndView newMatchPage() {
-		ModelAndView mav = new ModelAndView("data-input", "match", new Match());
+		ModelAndView mav = new ModelAndView("input", "match", new Match());
                 List<Match> matchList = matchService.findAll();
+                
 		mav.addObject("matchList", matchList);
 		return mav;
 	}
@@ -57,7 +58,7 @@ public class InputController {
 			final RedirectAttributes redirectAttributes) {
 		
 		if (result.hasErrors())
-			return new ModelAndView("data-input");
+			return new ModelAndView("input");
 		
 		ModelAndView mav = new ModelAndView();
 		String message = "Match number " + match.getMatchNum() + " with team " + match.getTeam() + " was successfully created.";
@@ -71,7 +72,7 @@ public class InputController {
         
         @RequestMapping(value="/schedule", method=RequestMethod.GET)
 	public ModelAndView matchSelectPage() {
-		ModelAndView mav = new ModelAndView("match-select");
+		ModelAndView mav = new ModelAndView("input-select");
 		List<Schedule> scheduleList = scheduleService.findAll();
 		mav.addObject("scheduleList", scheduleList);
 		return mav;
@@ -79,7 +80,7 @@ public class InputController {
 	
 	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public ModelAndView matchListPage() {
-		ModelAndView mav = new ModelAndView("match-list");
+		ModelAndView mav = new ModelAndView("input-list");
 		List<Match> matchList = matchService.findAll();
 		mav.addObject("matchList", matchList);
 		return mav;

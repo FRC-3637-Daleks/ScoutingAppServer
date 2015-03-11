@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.team3637.controller;
 
 import java.util.List;
@@ -84,7 +79,7 @@ public class OutputController {
     private MatchReport averageAlly(MatchReport report, int total) {
         if (total < 1)
             return report;
-        report.setAutoRobot((int)((float)report.getAutoRobot() / total * 100));
+        report.setAutoRobot((int)((float)report.getAutoRobot() / total * 100), null);
         report.setAutoStack(report.getAutoStack() / total);
         report.setAutoVision((int)((float)report.getAutoVision() / total * 100));
         report.setAutoDeadRec((int)((float)report.getAutoDeadRec() / total * 100));
@@ -176,7 +171,7 @@ public class OutputController {
                 opp3Pos++;
             } else if(matchList.get(i).getTeam() == ally1Val) {
                 ally1.setTeam(matchList.get(i).getTeam());
-                ally1.setAutoRobot(ally1.getAutoRobot() + toInt(matchList.get(i).getAutoRobot()));
+                ally1.setAutoRobot(ally1.getAutoRobot() + toInt(matchList.get(i).getAutoRobot()), null);
                 ally1.setAutoStack(ally1.getAutoStack() + matchList.get(i).getAutoStack());
                 ally1.setAutoVision(ally1.getAutoVision() + toInt(matchList.get(i).getAutoVision()));
                 ally1.setAutoDeadRec(ally1.getAutoDeadRec() + toInt(matchList.get(i).getAutoDeadRec()));
@@ -218,7 +213,7 @@ public class OutputController {
                 ally1Pos++;
             } else if(matchList.get(i).getTeam() == ally2Val) {
                 ally2.setTeam(matchList.get(i).getTeam());
-                ally2.setAutoRobot(ally2.getAutoRobot() + toInt(matchList.get(i).getAutoRobot()));
+                ally2.setAutoRobot(ally2.getAutoRobot() + toInt(matchList.get(i).getAutoRobot()), null);
                 ally2.setAutoStack(ally2.getAutoStack() + matchList.get(i).getAutoStack());
                 ally2.setAutoVision(ally2.getAutoVision() + toInt(matchList.get(i).getAutoVision()));
                 ally2.setAutoDeadRec(ally2.getAutoDeadRec() + toInt(matchList.get(i).getAutoDeadRec()));

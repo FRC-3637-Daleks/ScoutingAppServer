@@ -17,12 +17,12 @@
     <table id="schedule">
             <tr>
                 <th width="25px">Match Number</th>
-                <th width="150px">R1</th>
-                <th width="150px">R2</th>
-                <th width="150px">R3</th>
                 <th width="150px">B1</th>
                 <th width="150px">B2</th>
                 <th width="150px">B3</th>
+                <th width="150px">R1</th>
+                <th width="150px">R2</th>
+                <th width="150px">R3</th>
             </tr>
             <c:forEach var="schedule" items="${scheduleList}">
             <tr>

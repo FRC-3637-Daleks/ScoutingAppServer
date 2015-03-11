@@ -1,5 +1,6 @@
 package com.team3637.init;
 
+import static com.mysql.jdbc.NonRegisteringDriver.OS;
 import java.util.Properties;
 
 import javax.annotation.Resource;
@@ -101,6 +102,11 @@ public class WebAppConfig extends WebMvcConfigurerAdapter{
         @Override
         public void addResourceHandlers(final ResourceHandlerRegistry registry) {
             registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+            if (OS.indexOf("win") >= 0) {
+                registry.addResourceHandler("/teamPics/**").addResourceLocations("file:///C:/Users/Public/teamPics/");
+            } else {
+                registry.addResourceHandler("/teamPics/**").addResourceLocations("file:/home/teamPics/");
+            }
         }
 
 }

@@ -20,79 +20,53 @@ public class Match {
 
     private Boolean autoRobot;
 
-    private Integer autoStack;
+    private Boolean autoTote;
+    
+    private Boolean autoCan;
+    
+    private Boolean startTL;
+    
+    private Boolean startTM;
 
-    private Boolean autoVision;
-
-    private Boolean autoDeadRec;
-
-    private Boolean autoStep;
-
-    private Boolean autoOverBump;
-
-    private Boolean autoAroundBump;
-
-    private Boolean overBump;
-
-    private Integer speed;
-
-    private Boolean dropTote;
-
-    private Boolean knockStack;
-
-    private Boolean litterCan;
-
-    private Boolean litterUp;
-
-    private Boolean litterPush;
-
-    private Integer totesCarried;
-
-    private Boolean diffOps;
-
-    private Boolean upOrFlip;
-
-    private Integer onTopOf;
-
-    private Integer pickUpSpeed;
-
-    private Boolean hpTotes;
-
-    private Boolean hpLitter;
-
-    private Boolean hpThrow;
-
-    private Boolean canUp;
-
-    private Integer downHeight;
-
-    private Boolean takeCanFromStep;
-
-    private Integer canUpSpeed;
-
-    private Boolean canDiffOps;
-
-    private Boolean canFromStepNoFill;
-
+    private Boolean startTR;
+    
+    private Boolean startLL;
+    
+    private Boolean startLM;
+    
+    private Boolean startLR;
+    
+    private Boolean styleHS;
+    
+    private Boolean styleTopper;
+    
+    private Boolean styleLitterCan;
+    
+    private Boolean styleLandfill;
+    
+    private Boolean styleThrow;
+    
+    private Boolean styleSingleStack;
+    
+    private Boolean styleMakeAtOnce;
+    
+    private Boolean styleCanFromStep;
+    
     private Boolean coopTote;
 
     private Integer coopStep;
 
-    private Boolean failFunction;
+    private Boolean knockStack;
 
-    private Boolean fouls;
-
-    private Boolean deadOnArrive;
+    private Boolean dead;
+    
+    private Boolean unstable;
 
     private Boolean tip;
 
-    private Boolean commError;
-
-    private Boolean shotty;
-
     private String comment;
 
-    private Integer score = 0;
+    private Integer score;
 
     public Integer getId() {
         return id;
@@ -103,19 +77,19 @@ public class Match {
     }
 
     public Integer getMatchNum() {
-            return matchNum;
+        return matchNum;
     }
 
     public void setMatchNum(Integer matchNum) {
-            this.matchNum = matchNum;
+        this.matchNum = matchNum;
     }
 
     public Integer getTeam() {
-            return team;
+        return team;
     }
 
     public void setTeam(Integer team) {
-            this.team = team;
+        this.team = team;
     }
 
     public Boolean getAutoRobot() {
@@ -126,220 +100,132 @@ public class Match {
         this.autoRobot = autoRobot;
     }
 
-    public Integer getAutoStack() {
-        return autoStack;
+    public Boolean getAutoTote() {
+        return autoTote;
     }
 
-    public void setAutoStack(Integer autoStack) {
-        this.autoStack = autoStack;
+    public void setAutoTote(Boolean autoTote) {
+        this.autoTote = autoTote;
     }
 
-    public Boolean getAutoVision() {
-        return autoVision;
+    public Boolean getAutoCan() {
+        return autoCan;
     }
 
-    public void setAutoVision(Boolean autoVision) {
-        this.autoVision = autoVision;
+    public void setAutoCan(Boolean autoCan) {
+        this.autoCan = autoCan;
     }
 
-    public Boolean getAutoDeadRec() {
-        return autoDeadRec;
+    public Boolean getStartTL() {
+        return startTL;
     }
 
-    public void setAutoDeadRec(Boolean autoDeadRec) {
-        this.autoDeadRec = autoDeadRec;
+    public void setStartTL(Boolean startTL) {
+        this.startTL = startTL;
     }
 
-    public Boolean getAutoStep() {
-        return autoStep;
+    public Boolean getStartTM() {
+        return startTM;
     }
 
-    public void setAutoStep(Boolean autoStep) {
-        this.autoStep = autoStep;
+    public void setStartTM(Boolean startTM) {
+        this.startTM = startTM;
     }
 
-    public Boolean getAutoOverBump() {
-        return autoOverBump;
+    public Boolean getStartTR() {
+        return startTR;
     }
 
-    public void setAutoOverBump(Boolean autoOverBump) {
-        this.autoOverBump = autoOverBump;
+    public void setStartTR(Boolean startTR) {
+        this.startTR = startTR;
     }
 
-    public Boolean getAutoAroundBump() {
-        return autoAroundBump;
+    public Boolean getStartLL() {
+        return startLL;
     }
 
-    public void setAutoAroundBump(Boolean autoAroundBump) {
-        this.autoAroundBump = autoAroundBump;
+    public void setStartLL(Boolean startLL) {
+        this.startLL = startLL;
     }
 
-    public Boolean getOverBump() {
-        return overBump;
+    public Boolean getStartLM() {
+        return startLM;
     }
 
-    public void setOverBump(Boolean overBump) {
-        this.overBump = overBump;
+    public void setStartLM(Boolean startLM) {
+        this.startLM = startLM;
     }
 
-    public Integer getSpeed() {
-        return speed;
+    public Boolean getStartLR() {
+        return startLR;
     }
 
-    public void setSpeed(Integer speed) {
-        this.speed = speed;
+    public void setStartLR(Boolean startLR) {
+        this.startLR = startLR;
     }
 
-    public Boolean getDropTote() {
-        return dropTote;
+    public Boolean getStyleHS() {
+        return styleHS;
     }
 
-    public void setDropTote(Boolean dropTote) {
-        this.dropTote = dropTote;
+    public void setStyleHS(Boolean styleHS) {
+        this.styleHS = styleHS;
     }
 
-    public Boolean getKnockStack() {
-        return knockStack;
+    public Boolean getStyleTopper() {
+        return styleTopper;
     }
 
-    public void setKnockStack(Boolean knockStack) {
-        this.knockStack = knockStack;
+    public void setStyleTopper(Boolean styleTopper) {
+        this.styleTopper = styleTopper;
     }
 
-    public Boolean getLitterCan() {
-        return litterCan;
+    public Boolean getStyleLitterCan() {
+        return styleLitterCan;
     }
 
-    public void setLitterCan(Boolean litterCan) {
-        this.litterCan = litterCan;
+    public void setStyleLitterCan(Boolean styleLitterCan) {
+        this.styleLitterCan = styleLitterCan;
     }
 
-    public Boolean getLitterUp() {
-        return litterUp;
+    public Boolean getStyleLandfill() {
+        return styleLandfill;
     }
 
-    public void setLitterUp(Boolean litterUp) {
-        this.litterUp = litterUp;
+    public void setStyleLandfill(Boolean styleLandfill) {
+        this.styleLandfill = styleLandfill;
     }
 
-    public Boolean getLitterPush() {
-        return litterPush;
+    public Boolean getStyleThrow() {
+        return styleThrow;
     }
 
-    public void setLitterPush(Boolean litterPush) {
-        this.litterPush = litterPush;
+    public void setStyleThrow(Boolean styleThrow) {
+        this.styleThrow = styleThrow;
     }
 
-    public Integer getTotesCarried() {
-        return totesCarried;
+    public Boolean getStyleSingleStack() {
+        return styleSingleStack;
     }
 
-    public void setTotesCarried(Integer totesCarried) {
-        this.totesCarried = totesCarried;
+    public void setStyleSingleStack(Boolean styleSingleStack) {
+        this.styleSingleStack = styleSingleStack;
     }
 
-    public Boolean getDiffOps() {
-        return diffOps;
+    public Boolean getStyleMakeAtOnce() {
+        return styleMakeAtOnce;
     }
 
-    public void setDiffOps(Boolean diffOps) {
-        this.diffOps = diffOps;
+    public void setStyleMakeAtOnce(Boolean styleMakeAtOnce) {
+        this.styleMakeAtOnce = styleMakeAtOnce;
     }
 
-    public Boolean getUpOrFlip() {
-        return upOrFlip;
+    public Boolean getStyleCanFromStep() {
+        return styleCanFromStep;
     }
 
-    public void setUpOrFlip(Boolean upOrFlip) {
-        this.upOrFlip = upOrFlip;
-    }
-
-    public Integer getOnTopOf() {
-        return onTopOf;
-    }
-
-    public void setOnTopOf(Integer onTopOf) {
-        this.onTopOf = onTopOf;
-    }
-
-    public Integer getPickUpSpeed() {
-        return pickUpSpeed;
-    }
-
-    public void setPickUpSpeed(Integer pickUpSpeed) {
-        this.pickUpSpeed = pickUpSpeed;
-    }
-
-    public Boolean getHpTotes() {
-        return hpTotes;
-    }
-
-    public void setHpTotes(Boolean hpTotes) {
-        this.hpTotes = hpTotes;
-    }
-
-    public Boolean getHpLitter() {
-        return hpLitter;
-    }
-
-    public void setHpLitter(Boolean hpLitter) {
-        this.hpLitter = hpLitter;
-    }
-
-    public Boolean getHpThrow() {
-        return hpThrow;
-    }
-
-    public void setHpThrow(Boolean hpThrow) {
-        this.hpThrow = hpThrow;
-    }
-
-    public Boolean getCanUp() {
-        return canUp;
-    }
-
-    public void setCanUp(Boolean canUp) {
-        this.canUp = canUp;
-    }
-
-    public Integer getDownHeight() {
-        return downHeight;
-    }
-
-    public void setDownHeight(Integer downHeight) {
-        this.downHeight = downHeight;
-    }
-
-    public Boolean getTakeCanFromStep() {
-        return takeCanFromStep;
-    }
-
-    public void setTakeCanFromStep(Boolean takeCanFromStep) {
-        this.takeCanFromStep = takeCanFromStep;
-    }
-
-    public Integer getCanUpSpeed() {
-        return canUpSpeed;
-    }
-
-    public void setCanUpSpeed(Integer canUpSpeed) {
-        this.canUpSpeed = canUpSpeed;
-    }
-
-    public Boolean getCanDiffOps() {
-        return canDiffOps;
-    }
-
-    public void setCanDiffOps(Boolean canDiffOps) {
-        this.canDiffOps = canDiffOps;
-    }
-
-    public Boolean getCanFromStepNoFill() {
-        return canFromStepNoFill;
-    }
-
-    public void setCanFromStepNoFill(Boolean canFromStepNoFill) {
-        this.canFromStepNoFill = canFromStepNoFill;
+    public void setStyleCanFromStep(Boolean styleCanFromStep) {
+        this.styleCanFromStep = styleCanFromStep;
     }
 
     public Boolean getCoopTote() {
@@ -358,28 +244,28 @@ public class Match {
         this.coopStep = coopStep;
     }
 
-    public Boolean getFailFunction() {
-        return failFunction;
+    public Boolean getKnockStack() {
+        return knockStack;
     }
 
-    public void setFailFunction(Boolean failFunction) {
-        this.failFunction = failFunction;
+    public void setKnockStack(Boolean knockStack) {
+        this.knockStack = knockStack;
     }
 
-    public Boolean getFouls() {
-        return fouls;
+    public Boolean getDead() {
+        return dead;
     }
 
-    public void setFouls(Boolean fouls) {
-        this.fouls = fouls;
+    public void setDead(Boolean dead) {
+        this.dead = dead;
     }
 
-    public Boolean getDeadOnArrive() {
-        return deadOnArrive;
+    public Boolean getUnstable() {
+        return unstable;
     }
 
-    public void setDeadOnArrive(Boolean deadOnArrive) {
-        this.deadOnArrive = deadOnArrive;
+    public void setUnstable(Boolean unstable) {
+        this.unstable = unstable;
     }
 
     public Boolean getTip() {
@@ -388,22 +274,6 @@ public class Match {
 
     public void setTip(Boolean tip) {
         this.tip = tip;
-    }
-
-    public Boolean getCommError() {
-        return commError;
-    }
-
-    public void setCommError(Boolean commError) {
-        this.commError = commError;
-    }
-
-    public Boolean getShotty() {
-        return shotty;
-    }
-
-    public void setShotty(Boolean shotty) {
-        this.shotty = shotty;
     }
 
     public String getComment() {
@@ -421,4 +291,6 @@ public class Match {
     public void setScore(Integer score) {
         this.score = score;
     }
+    
+    
 }

@@ -48,10 +48,18 @@ th {
 textarea {
     resize: none;
     background-color:#D4D4D4;
+    margin-left: 20px;
 }
 
-input {
+input[type="text"] {
     margin-top: 10px;
+    margin-left: 20px;
+    text-align: center;
+    border-style:none;
+}
+
+li {
+    text-align: left;
 }
 
 /* classes */
@@ -66,24 +74,24 @@ input {
     margin-bottom: 10px;
 }
 
+.medium {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
 .heading {
     font-size: 2.5em;
     font-weight: bold;
 }
 
+.vert {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 /* ids */
-
-#auto td {
-    width: 50%;
-}
-
-#teleop td {
-    width: 33%;
-}
-
-#post td {
-    width: 50%;
-}
 
 #schedule th{
     width: 300px;
@@ -105,6 +113,9 @@ input {
     position: absolute;
     top: 18px;
     right: 25px;
+    width: auto;
+    height: auto;
+    max-width: 250px;
 }
 
 #start {
