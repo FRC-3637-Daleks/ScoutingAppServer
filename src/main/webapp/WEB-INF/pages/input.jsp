@@ -69,13 +69,14 @@
                 <tr>
                     <td class="medium">Play Style</td>
                     <td>
-                        Robot is works well at the human station<form:checkbox path="styleHS" /><br/>
+                        Robot works well at the human station<form:checkbox path="styleHS" /><br/>
                         Robot places cans on top of existing stacks<form:checkbox path="styleTopper" /><br/>
                         Robot puts litter in cans<form:checkbox path="styleLitterCan" /><br/>
                         Robot works well at landfill<form:checkbox path="styleLandfill" /><br/>
                         Human player throws litter<form:checkbox path="styleThrow" /><br/>
                         Robot picks up one or two totes at a time to add to stack<form:checkbox path="styleSingleStack" /><br/>
                         Robot makes entire stack in one shot<form:checkbox path="styleMakeAtOnce" />
+                        Robot takes cans from the step<form:checkbox path="styleCanFromStep" />
                     </td>
                 </tr>
                 <tr>
