@@ -39,17 +39,9 @@
                     <th colspan="2" class="large">Match Input</th>
                 </tr>
                 <tr>
-                    <td class="medium">Notes</td>
+                    <td class="medium">Start Position</td>
                     <td>
-                        <ul>
-                            <li>Directions (left, middle, right) are in relation to the drivers of the team you are scouting</li>
-                            <!--<li>If a robot does not do something that has a text field the the field blank</li>-->
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="medium">Start</td>
-                    <td>
+                        Left, middle, and right are in relation to the drivers of the team you are scouting<br/>
                         Robot starts at left yellow tote<form:checkbox path="startTL" /><br/>
                         Robot starts at middle yellow tote<form:checkbox path="startTM" /><br/>
                         Robot starts at right yellow tote<form:checkbox path="startTR" /><br/>
@@ -61,6 +53,7 @@
                 <tr>
                     <td class="medium">Autonomous</td>
                     <td>
+                        Check all that apply<br/>
                         Robot moves forward during auton<form:checkbox path="autoRobot" /><br/>
                         Robot moves tote during auton<form:checkbox path="autoTote" /><br/>
                         Robot moves can during auton<form:checkbox path="autoCan" />
@@ -69,13 +62,14 @@
                 <tr>
                     <td class="medium">Play Style</td>
                     <td>
+                        Check all that apply<br/>
                         Robot works well at the human station<form:checkbox path="styleHS" /><br/>
                         Robot places cans on top of existing stacks<form:checkbox path="styleTopper" /><br/>
                         Robot puts litter in cans<form:checkbox path="styleLitterCan" /><br/>
                         Robot works well at landfill<form:checkbox path="styleLandfill" /><br/>
                         Human player throws litter<form:checkbox path="styleThrow" /><br/>
-                        Robot picks up one or two totes at a time to add to stack<form:checkbox path="styleSingleStack" /><br/>
-                        Robot makes entire stack in one shot<form:checkbox path="styleMakeAtOnce" />
+                        Robot picks up only one or two totes at a time to add to stack<form:checkbox path="styleSingleStack" /><br/>
+                        Robot makes entire stack in one shot<form:checkbox path="styleMakeAtOnce" /><br/>
                         Robot takes cans from the step<form:checkbox path="styleCanFromStep" />
                     </td>
                 </tr>
@@ -90,10 +84,11 @@
                 <tr>
                     <td class="medium">Problems</td>
                     <td>
-                        <form:checkbox path="knockStack" />Robot knocked a stack over<br/>
-                        <form:checkbox path="dead" />Robot stopped working or did not work<br/>
-                        <form:checkbox path="unstable" />Robot is unstable or wabbled<br/>
-                        <form:checkbox path="tip" />Robot tipped over
+                        Check all that apply<br/>
+                        Robot knocked a stack over<form:checkbox path="knockStack" /><br/>
+                        Robot stopped working or did not work<form:checkbox path="dead" /><br/>
+                        Robot is unstable or wobbly<form:checkbox path="unstable" /><br/>
+                        Robot tipped over<form:checkbox path="tip" />
                     </td>
                 </tr>
                 <tr>

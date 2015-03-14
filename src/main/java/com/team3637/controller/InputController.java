@@ -1,6 +1,7 @@
 package com.team3637.controller;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import javax.validation.Valid;
 
@@ -15,14 +16,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.team3637.exception.MatchNotFound;
 import com.team3637.model.Match;
+import com.team3637.model.MatchReport;
 import com.team3637.service.MatchService;
 import com.team3637.validation.MatchValidator;
 import com.team3637.model.Schedule;
 import com.team3637.service.ScheduleService;
 import com.team3637.validation.ScheduleValidator;
+import com.team3637.other.AverageVals;
+import com.team3637.validation.MatchReportValidator;
+
 
 @Controller
 @RequestMapping(value="/input")
@@ -32,23 +39,38 @@ public class InputController {
 	private MatchService matchService;
         @Autowired
 	private ScheduleService scheduleService;
-	
 	@Autowired
 	private MatchValidator matchValidator;
         @Autowired
 	private ScheduleValidator scheduleValidator;
+        @Autowired
+        private MatchReportValidator matchReportValidator;
 	
-	@InitBinder
-	private void initBinder(WebDataBinder binder) {
-		binder.setValidator(matchValidator);
-	}
+            @InitBinder("match")
+        private void initMatchBinder(WebDataBinder binder) {
+                binder.setValidator(matchValidator);
+        }
 
-	@RequestMapping(value="/create", method=RequestMethod.GET)
-	public ModelAndView newMatchPage() {
+        @InitBinder("matchReport")
+        private void initMatchReportBinder(WebDataBinder binder) {
+                binder.setValidator(matchReportValidator);
+        }
+
+	@RequestMapping(value="/create",params = {"teamNum"}, method=RequestMethod.GET)
+	public @ResponseBody ModelAndView newMatchPage(
+        @RequestParam(value = "teamNum", required=false) int teamNumVal
+        ) {
 		ModelAndView mav = new ModelAndView("input", "match", new Match());
                 List<Match> matchList = matchService.findAll();
-                
-		mav.addObject("matchList", matchList);
+                List<Match> teamList = new ArrayList<>();
+                AverageVals avg = new AverageVals();
+                for (Match match : matchList) {
+                    if(match.getTeam().equals(teamNumVal)) {
+                        teamList.add(match);
+                    }
+                } 
+                MatchReport team = avg.addAlly(teamList);
+		mav.addObject("team", team);
 		return mav;
 	}
 	

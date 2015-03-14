@@ -152,3 +152,7 @@ li {
     color: black;
     font-weight: bold;
 }
+
+#reportButton {
+    margin-top: 10px;
+}

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -8,8 +7,6 @@
         <title>Home page</title>
         <link rel="icon" type="image/icon" href="${pageContext.request.contextPath}/resources/favicon.ico">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/style.css">
-        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/jquery-2.1.3.min.js"></script>
-        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/script.js"></script>
     </head>
     <body>
     	<center>

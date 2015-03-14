@@ -1,6 +1,7 @@
 package com.team3637.controller;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import javax.validation.Valid;
 
@@ -29,7 +30,6 @@ import com.team3637.other.AverageVals;
 import com.team3637.service.ScheduleService;
 import com.team3637.validation.MatchReportValidator;
 import com.team3637.validation.ScheduleValidator;
-import java.util.ArrayList;
 
 
 @Controller
@@ -60,13 +60,18 @@ public class OutputController {
             binder.setValidator(matchReportValidator);
     }
 
+    @RequestMapping(value="/", method=RequestMethod.GET)
+    public String selectRedirct() {
+        return "redirect:/output/select.html";
+    }
+    
     @RequestMapping(value="/select", method=RequestMethod.GET)
-	public ModelAndView matchSelectPage() {
-		ModelAndView mav = new ModelAndView("report-select");
-		List<Schedule> scheduleList = scheduleService.findAll();
-		mav.addObject("scheduleList", scheduleList);
-		return mav;
-	}
+    public ModelAndView matchSelectPage() {
+            ModelAndView mav = new ModelAndView("report-select");
+            List<Schedule> scheduleList = scheduleService.findAll();
+            mav.addObject("scheduleList", scheduleList);
+            return mav;
+    }
     
     @RequestMapping(value="/report", method=RequestMethod.GET)
     public String reportRedirct(final RedirectAttributes redirectAttributes) {
@@ -114,5 +119,29 @@ public class OutputController {
         mav.addObject("ally2", ally2);
         mav.addObject("matchList", matchList);
         return mav;
+    }
+    
+    @RequestMapping(value="/selectTeam", method=RequestMethod.GET)
+    public ModelAndView teamSelectPage() {
+            ModelAndView mav = new ModelAndView("report-team-select");
+            return mav;
+    }
+    
+    @RequestMapping(value="/reportTeam",params = {"teamNum"}, method=RequestMethod.GET)
+    public @ResponseBody ModelAndView teamReport(
+    @RequestParam(value = "teamNum", required=false) int teamNumVal
+    ) {
+            ModelAndView mav = new ModelAndView("report-team", "team", new Match());
+            List<Match> matchList = matchService.findAll();
+            List<Match> teamList = new ArrayList<>();
+            AverageVals avg = new AverageVals();
+            for (Match match : matchList) {
+                if(match.getTeam().equals(teamNumVal)) {
+                    teamList.add(match);
+                }
+            } 
+            MatchReport team = avg.addAlly(teamList);
+            mav.addObject("team", team);
+            return mav;
     }
 }

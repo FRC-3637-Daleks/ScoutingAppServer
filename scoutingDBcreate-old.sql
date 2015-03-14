@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `scouting` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `scouting`;
 -- MySQL dump 10.13  Distrib 5.6.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: scouting
@@ -24,36 +26,49 @@ DROP TABLE IF EXISTS `matches`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `matches` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `matchNum` int(11) NOT NULL,
-  `team` int(11) NOT NULL,
-  `autoRobot` tinyint(1) DEFAULT NULL,
-  `autoTote` tinyint(1) DEFAULT NULL,
-  `autoCan` tinyint(1) DEFAULT NULL,
-  `startTL` tinyint(1) DEFAULT NULL,
-  `startTM` tinyint(1) DEFAULT NULL,
-  `startTR` tinyint(1) DEFAULT NULL,
-  `startLL` tinyint(1) DEFAULT NULL,
-  `startLM` tinyint(1) DEFAULT NULL,
-  `startLR` tinyint(1) DEFAULT NULL,
-  `styleHS` tinyint(1) DEFAULT NULL,
-  `styleTopper` tinyint(1) DEFAULT NULL,
-  `styleLitterCan` tinyint(1) DEFAULT NULL,
-  `styleLandfill` tinyint(1) DEFAULT NULL,
-  `styleThrow` tinyint(1) DEFAULT NULL,
-  `styleSingleStack` tinyint(1) DEFAULT NULL,
-  `styleMakeAtOnce` tinyint(1) DEFAULT NULL,
-  `styleCanFromStep` tinyint(1) DEFAULT NULL,
-  `coopTote` tinyint(1) DEFAULT NULL,
-  `coopStep` int(11) DEFAULT NULL,
-  `knockStack` tinyint(1) DEFAULT NULL,
-  `dead` tinyint(1) DEFAULT NULL,
-  `unstable` tinyint(1) DEFAULT NULL,
-  `tip` tinyint(1) DEFAULT NULL,
-  `comment` varchar(255) DEFAULT '',
-  `score` int(11) DEFAULT NULL,
+  `matchNum` int(11) NOT NULL DEFAULT '0',
+  `team` int(11) NOT NULL DEFAULT '0',
+  `autoRobot` tinyint(1) DEFAULT '0',
+  `autoStack` int(11) DEFAULT '0',
+  `autoVision` tinyint(1) DEFAULT '0',
+  `autoDeadRec` tinyint(1) DEFAULT '0',
+  `autoStep` tinyint(1) DEFAULT '0',
+  `autoOverBump` tinyint(1) DEFAULT '0',
+  `autoAroundBump` tinyint(1) DEFAULT '0',
+  `overBump` tinyint(1) DEFAULT '0',
+  `speed` int(11) DEFAULT '0',
+  `dropTote` tinyint(1) DEFAULT '0',
+  `knockStack` tinyint(1) DEFAULT '0',
+  `litterCan` tinyint(1) DEFAULT '0',
+  `litterUp` tinyint(1) DEFAULT '0',
+  `litterPush` tinyint(1) DEFAULT '0',
+  `totesCarried` int(11) DEFAULT '0',
+  `diffOps` tinyint(1) DEFAULT '0',
+  `upOrFlip` tinyint(1) DEFAULT '0',
+  `onTopOf` int(11) DEFAULT '0',
+  `pickUpSpeed` int(11) DEFAULT '0',
+  `hpTotes` tinyint(1) DEFAULT '0',
+  `hpLitter` tinyint(1) DEFAULT '0',
+  `hpThrow` tinyint(1) DEFAULT '0',
+  `canUp` tinyint(1) DEFAULT '0',
+  `downHeight` int(11) DEFAULT '0',
+  `takeCanFromStep` tinyint(1) DEFAULT '0',
+  `canUpSpeed` int(11) DEFAULT '0',
+  `canDiffOps` tinyint(1) DEFAULT '0',
+  `canFromStepNoFill` tinyint(1) DEFAULT '0',
+  `coopTote` tinyint(1) DEFAULT '0',
+  `coopStep` int(11) DEFAULT '0',
+  `failFunction` tinyint(1) DEFAULT '0',
+  `fouls` tinyint(1) DEFAULT '0',
+  `deadOnArrive` tinyint(1) DEFAULT '0',
+  `tip` tinyint(1) DEFAULT '0',
+  `commError` tinyint(1) DEFAULT '0',
+  `shotty` tinyint(1) DEFAULT '0',
+  `comment` varchar(200) DEFAULT NULL,
+  `score` int(11) DEFAULT '0',
   PRIMARY KEY (`id`,`matchNum`,`team`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,15 +80,15 @@ DROP TABLE IF EXISTS `schedule`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `schedule` (
   `matchNum` int(11) NOT NULL AUTO_INCREMENT,
-  `B1` int(11) DEFAULT NULL,
-  `B2` int(11) DEFAULT NULL,
-  `B3` int(11) DEFAULT NULL,
   `R1` int(11) DEFAULT NULL,
   `R2` int(11) DEFAULT NULL,
   `R3` int(11) DEFAULT NULL,
+  `B1` int(11) DEFAULT NULL,
+  `B2` int(11) DEFAULT NULL,
+  `B3` int(11) DEFAULT NULL,
   PRIMARY KEY (`matchNum`),
   UNIQUE KEY `matchNum_UNIQUE` (`matchNum`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,6 +111,7 @@ CREATE TABLE `teams` (
   UNIQUE KEY `number_UNIQUE` (`number`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -106,4 +122,4 @@ CREATE TABLE `teams` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-03-12 23:08:03
+-- Dump completed on 2015-02-21  0:15:33

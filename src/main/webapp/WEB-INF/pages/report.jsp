@@ -11,7 +11,7 @@
     <body>
         <img src="${pageContext.request.contextPath}/resources/daleks_banner.jpg" alt="Hunterdon Central">
         <hr>
-        <div class="heading">Pre-Match Scouting Report</div>
+        <div class="heading"><div id="back"><button onclick="window.location = '${pageContext.request.contextPath}/output/select.html'">&#x2190; Back</button></div>Pre-Match Scouting Report</div>
         <h4>Information about the other alliance teams will be:</h4>
         <table style="width: 42.5%; " border="1">
                 <tr>
@@ -66,7 +66,7 @@
                     <td style="width: 455px" class="medium">Autonomous Mode</td>
                     <td style="width: 142.5px"></td>
                     <td style="width: 142.5px"></td>
-                    <td style="width: 455px" class="medium">Star Position</td>
+                    <td style="width: 455px" class="medium">Start Position</td>
                     <td style="width: 142.5px"></td>
                     <td style="width: 142.5px"></td>
                 </tr>
@@ -75,56 +75,56 @@
                     <td style="width: 142.5px">${ally1.autoRobot}%</td>
                     <td style="width: 142.5px">${ally2.autoRobot}%</td>
                     <td style="width: 455px">Robot Starts by the Left Auton Tote</td>
-                    <td style="width: 142.5px">${ally1.startTL}%</td>
-                    <td style="width: 142.5px">${ally2.startTL}%</td>
+                    <td style="width: 142.5px">${ally1.startTL}</td>
+                    <td style="width: 142.5px">${ally2.startTL}</td>
                 </tr>
                 <tr>
                     <td style="width: 455px">Robot Moves Tote</td>
                     <td style="width: 142.5px">${ally1.autoTote}%</td>
                     <td style="width: 142.5px">${ally2.autoTote}%</td>
                     <td style="width: 455px">Robot Starts by the Middle Auton Tote</td>
-                    <td style="width: 142.5px">${ally2.startTM}%</td>
-                    <td style="width: 142.5px">${ally2.startTM}%</td>
+                    <td style="width: 142.5px">${ally2.startTM}</td>
+                    <td style="width: 142.5px">${ally2.startTM}</td>
                 </tr>
                 <tr>
                     <td style="width: 455px">Robot Moves Can</td>
                     <td style="width: 142.5px">${ally1.autoCan}%</td>
                     <td style="width: 142.5px">${ally2.autoCan}%</td>
                     <td style="width: 455px">Robot Starts by the Right Auton Tote</td>
-                    <td style="width: 142.5px">${ally1.startTR}%</td>
-                    <td style="width: 142.5px">${ally2.startTR}%</td>
+                    <td style="width: 142.5px">${ally1.startTR}</td>
+                    <td style="width: 142.5px">${ally2.startTR}</td>
                 </tr>
                 <tr>
                     <td style="width: 455px" class="medium">Play Style</td>
                     <td style="width: 142.5px"></td>
                     <td style="width: 142.5px"></td>
                     <td style="width: 455px">Robot Starts on the Left of the Landfill</td>
-                    <td style="width: 142.5px">${ally1.startLL}%</td>
-                    <td style="width: 142.5px">${ally2.startLL}%</td>
+                    <td style="width: 142.5px">${ally1.startLL}</td>
+                    <td style="width: 142.5px">${ally2.startLL}</td>
                 </tr>
                 <tr>
                     <td style="width: 455px">Robot works well at the human station</td>
                     <td style="width: 142.5px">${ally1.styleHS}%</td>
                     <td style="width: 142.5px">${ally2.styleHS}%</td>
-                    <td style="width: 455px">Robot Starts on the Left of the Landfill</td>
-                    <td style="width: 142.5px">${ally1.startTR}%</td>
-                    <td style="width: 142.5px">${ally2.startTR}%</td>
+                    <td style="width: 455px">Robot Starts it the Middle of the Landfill</td>
+                    <td style="width: 142.5px">${ally1.startLM}</td>
+                    <td style="width: 142.5px">${ally2.startLM}</td>
                 </tr>
                 <tr>
                     <td style="width: 455px">Robot places cans on top of existing stacks</td>
                     <td style="width: 142.5px">${ally1.styleTopper}%</td>
                     <td style="width: 142.5px">${ally2.styleTopper}%</td>
-                    <td style="width: 455px">Robot Starts it the Middle of the Landfill</td>
-                    <td style="width: 142.5px">${ally1.startLM}%</td>
-                    <td style="width: 142.5px">${ally2.startLM}%</td>
+                    <td style="width: 455px">Robot Starts on the Right of the Landfill</td>
+                    <td style="width: 142.5px">${ally1.startLR}</td>
+                    <td style="width: 142.5px">${ally2.startLR}</td>
                 </tr>
                 <tr>
                     <td style="width: 455px">Robot puts litter in cans</td>
                     <td style="width: 142.5px">${ally1.styleLitterCan}%</td>
                     <td style="width: 142.5px">${ally2.styleLitterCan}%</td>
-                    <td style="width: 455px">Robot Starts on the Right of the Landfill</td>
-                    <td style="width: 142.5px">${ally1.startLR}%</td>
-                    <td style="width: 142.5px">${ally2.startLR}%</td>
+                    <td style="width: 455px"></td>
+                    <td style="width: 142.5px"></td>
+                    <td style="width: 142.5px"></td>
                 </tr>
                 <tr>
                     <td style="width: 455px">Robot works well at landfill</td>
@@ -178,7 +178,7 @@
                     <td style="width: 455px"></td>
                     <td style="width: 142.5px"></td>
                     <td style="width: 142.5px"></td>
-                    <td style="width: 455px">Robot in Unstable or Tends to Wobble</td>
+                    <td style="width: 455px">Robot is Unstable or Tends to Wobble</td>
                     <td style="width: 142.5px">${ally1.unstable}%</td>
                     <td style="width: 142.5px">${ally2.unstable}%</td>
                 </tr>
@@ -195,14 +195,6 @@
                     <td style="width: 142.5px" colspan="2" height="200px">${ally1.comment}</td>
                     <td style="width: 455px">Team 2 Open Comments:</td>
                     <td style="width: 142.5px" colspan="2" height="200px">${ally2.comment}</td>
-                </tr>
-                <tr>
-                    <td style="width: 455px; height: 20px"></td>
-                    <td style="width: 142.5px; height: 20px"></td>
-                    <td style="width: 142.5px; height: 20px"></td>
-                    <td style="width: 455px; height: 20px"></td>
-                    <td style="width: 142.5px; height: 20px"></td>
-                    <td style="width: 142.5px; height: 20px"></td>
                 </tr>
         </table>
     </body>

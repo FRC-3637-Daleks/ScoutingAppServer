@@ -95,12 +95,12 @@ public class AverageVals {
             }
             report.setAutoRobot(averageBools(report.getAutoRobot(), count[0]));
             report.setAutoCan(averageBools(report.getAutoCan(), count[1]));
-            report.setStartTL(averageBools(report.getStartTL(), count[2]));
-            report.setStartTM(averageBools(report.getStartTM(), count[3]));
-            report.setStartTR(averageBools(report.getStartTR(), count[4]));
-            report.setStartLL(averageBools(report.getStartLL(), count[4]));
-            report.setStartLM(averageBools(report.getStartLM(), count[5]));
-            report.setStartLR(averageBools(report.getStartLR(), count[6]));
+//            report.setStartTL(averageBools(report.getStartTL(), count[2]));
+//            report.setStartTM(averageBools(report.getStartTM(), count[3]));
+//            report.setStartTR(averageBools(report.getStartTR(), count[4]));
+//            report.setStartLL(averageBools(report.getStartLL(), count[4]));
+//            report.setStartLM(averageBools(report.getStartLM(), count[5]));
+//            report.setStartLR(averageBools(report.getStartLR(), count[6]));
             report.setStyleHS(averageBools(report.getStyleHS(), count[7]));
             report.setStyleTopper(averageBools(report.getStyleTopper(), count[8]));
             report.setStyleLitterCan(averageBools(report.getStyleLitterCan(), count[9]));
