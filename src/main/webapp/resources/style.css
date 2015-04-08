@@ -91,6 +91,11 @@ li {
     transform: translateY(-50%);
 }
 
+.error {
+    color: #ff0000;
+    font-weight: bold;
+}
+
 /* ids */
 
 #schedule th{

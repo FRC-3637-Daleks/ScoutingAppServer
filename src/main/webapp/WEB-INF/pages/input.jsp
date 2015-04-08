@@ -31,12 +31,18 @@
         <hr>
         <div class="heading"><div id="back"><button onclick="window.location = '${pageContext.request.contextPath}/input/schedule.html'">&#x2190; Back</button></div>Team: ${teamNum} Match: ${matchNum}</div> 
         <hr>
-        <form:form method="POST" commandName="match" action="${pageContext.request.contextPath}/input/create.html">
+        <form:form method="POST" commandName="match" action="${pageContext.request.contextPath}/input/create.html" onsubmit="return validateForm()">
             <form:hidden path="matchNum" value="${matchNum}" />
             <form:hidden path="team" value="${teamNum}" />
             <table id="input" class="input">
                 <tr>
                     <th colspan="2" class="large">Match Input</th>
+                </tr>
+                <tr>
+                    <td class="medium">Present</td>
+                    <td>
+                        Robot was <b>not</b> present for match<input type="checkbox" name="showed" id="showed" />
+                    </td>
                 </tr>
                 <tr>
                     <td class="medium">Start Position</td>
@@ -47,7 +53,8 @@
                         Robot starts at right yellow tote<form:checkbox path="startTR" /><br/>
                         Robot starts at left side of landfill<form:checkbox path="startLL" /><br/>
                         Robot starts in middle of landfill<form:checkbox path="startLM" /><br/>
-                        Robot starts at right side of landfill<form:checkbox path="startLR" />
+                        Robot starts at right side of landfill<form:checkbox path="startLR" /><br/>
+                        <div id="startError" class="error"></div>
                     </td>
                 </tr>
                 <tr>
@@ -70,7 +77,8 @@
                         Human player throws litter<form:checkbox path="styleThrow" /><br/>
                         Robot picks up only one or two totes at a time to add to stack<form:checkbox path="styleSingleStack" /><br/>
                         Robot makes entire stack in one shot<form:checkbox path="styleMakeAtOnce" /><br/>
-                        Robot takes cans from the step<form:checkbox path="styleCanFromStep" />
+                        Robot takes cans from the step<form:checkbox path="styleCanFromStep" /><br/>
+                        Robot stopped working or did not work<form:checkbox path="dead" />
                     </td>
                 </tr>
                 <tr>
@@ -86,7 +94,6 @@
                     <td>
                         Check all that apply<br/>
                         Robot knocked a stack over<form:checkbox path="knockStack" /><br/>
-                        Robot stopped working or did not work<form:checkbox path="dead" /><br/>
                         Robot is unstable or wobbly<form:checkbox path="unstable" /><br/>
                         Robot tipped over<form:checkbox path="tip" />
                     </td>
@@ -99,7 +106,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2"><input type="submit" value="Submit"></td>
+                    <td colspan="2">
+                        <input type="submit" value="Submit">
+                    </td>
                 </tr>
             </table>
         </form:form>
